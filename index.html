@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fly Select® — You Belong Here</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Josefin+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#07070a;--deep:#0c0c0f;--surface:#0f0f12;--surface2:#161619;
+  --gold:#c9a84c;--gold-light:#e4c96e;--gold-dim:rgba(201,168,76,0.28);
+  --gold-faint:rgba(201,168,76,0.07);
+  --white:#f0ece4;--muted:rgba(240,236,228,0.5);--muted2:rgba(240,236,228,0.22);
+  --border:rgba(201,168,76,0.13);--border-s:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Josefin Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--gold-dim);}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 60px;
+  background:rgba(7,7,10,0.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,168,76,0.08);
+  transition:box-shadow 0.3s;
+}
+.nav-logo img{height:38px;object-fit:contain;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:10px 24px;background:none;cursor:pointer;font-family:'Josefin Sans',sans-serif;transition:all 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+
+/* ══ HERO — pure black/gold, no image ══ */
+.hero{
+  position:relative;height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;
+  background:var(--black);
+}
+
+/* Radial gold glow */
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(201,168,76,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 55%);
+}
+
+/* Subtle grid */
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.032) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 80%);
+}
+
+/* Diagonal accent lines */
+.hero-lines{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.hero-lines::before{
+  content:'';position:absolute;
+  top:0;left:50%;width:1px;height:100%;
+  background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.18) 30%,rgba(201,168,76,0.18) 70%,transparent);
+  transform:translateX(-50%);
+}
+.h-vline{
+  position:absolute;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.08) 30%,rgba(201,168,76,0.08) 70%,transparent);
+}
+.h-vline-l{left:12%;}.h-vline-r{right:12%;}
+
+/* Corner brackets */
+.corner{position:absolute;width:40px;height:40px;}
+.corner-tl{top:80px;left:52px;border-top:1px solid var(--gold-dim);border-left:1px solid var(--gold-dim);}
+.corner-tr{top:80px;right:52px;border-top:1px solid var(--gold-dim);border-right:1px solid var(--gold-dim);}
+.corner-bl{bottom:60px;left:52px;border-bottom:1px solid var(--gold-dim);border-left:1px solid var(--gold-dim);}
+.corner-br{bottom:60px;right:52px;border-bottom:1px solid var(--gold-dim);border-right:1px solid var(--gold-dim);}
+
+.hero-content{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  animation:heroReveal 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+  opacity:0;transform:translateY(36px);
+  padding:0 40px;
+}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0);}}
+
+.hero-logo{margin-bottom:40px;}
+.hero-logo img{
+  height:80px;object-fit:contain;
+  filter:drop-shadow(0 0 32px rgba(201,168,76,0.4)) drop-shadow(0 0 8px rgba(201,168,76,0.2));
+}
+
+.hero-badge{
+  font-size:9px;letter-spacing:0.48em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:18px;
+}
+.hero-badge::before,.hero-badge::after{content:'';width:44px;height:1px;background:var(--gold);opacity:0.55;}
+
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,8vw,96px);font-weight:300;
+  line-height:0.92;letter-spacing:-0.01em;margin-bottom:8px;
+}
+.hero-title em{
+  font-style:italic;color:var(--gold-light);display:block;
+  text-shadow:0 0 60px rgba(201,168,76,0.3);
+}
+
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(16px,2.2vw,22px);
+  font-weight:300;font-style:italic;
+  color:rgba(201,168,76,0.55);
+  letter-spacing:0.08em;margin-bottom:36px;
+}
+
+.hero-sub{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);line-height:2.2;max-width:400px;margin-bottom:52px;
+}
+
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.btn-gold{
+  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;
+  background:var(--gold);color:var(--black);border:none;
+  padding:16px 48px;cursor:pointer;font-weight:400;transition:all 0.3s;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 44px rgba(201,168,76,0.3);}
+.btn-ghost{
+  font-size:9px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);background:none;border:1px solid var(--border-s);
+  padding:16px 34px;cursor:pointer;font-family:'Josefin Sans',sans-serif;transition:all 0.3s;
+}
+.btn-ghost:hover{border-color:var(--gold-dim);color:var(--white);}
+
+.scroll-ind{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:7px;letter-spacing:0.38em;text-transform:uppercase;color:var(--muted2);
+  animation:heroReveal 2s ease forwards;opacity:0;
+}
+.scroll-ind::before{
+  content:'';width:1px;height:40px;
+  background:linear-gradient(to bottom,transparent,var(--gold-dim));
+  animation:scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top;}
+  50%{transform:scaleY(1);transform-origin:top;}
+  51%{transform-origin:bottom;}
+  100%{transform:scaleY(0);transform-origin:bottom;}
+}
+
+/* ══ STRIP ══ */
+.benefits-strip{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  background:rgba(201,168,76,0.06);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.strip-item{
+  display:flex;align-items:center;gap:10px;
+  padding:17px 28px;border-right:1px solid rgba(201,168,76,0.09);
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;transition:all 0.25s;
+}
+.strip-item:last-child{border-right:none;}
+.strip-item:hover{background:rgba(201,168,76,0.06);color:var(--white);}
+.strip-icon{color:var(--gold);font-size:12px;flex-shrink:0;}
+
+/* ══ SECTIONS ══ */
+.section{padding:100px 60px;}
+.section-label{font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.section-label::before{content:'';width:26px;height:1px;background:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.08;margin-bottom:10px;}
+.section-title em{font-style:italic;color:var(--gold-light);}
+.section-desc{font-size:10px;letter-spacing:0.09em;line-height:2.1;color:var(--muted);max-width:520px;margin-bottom:52px;}
+
+/* FEATURED */
+.ben-featured{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(201,168,76,0.09),rgba(201,168,76,0.03),rgba(201,168,76,0.07));
+  border:1px solid rgba(201,168,76,0.25);
+  padding:52px 60px;margin-bottom:16px;
+  display:flex;align-items:center;gap:60px;flex-wrap:wrap;
+}
+.ben-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.ben-featured::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07),transparent 70%);pointer-events:none;}
+.ben-pct{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,12vw,130px);font-weight:300;color:var(--gold);line-height:0.85;flex-shrink:0;text-shadow:0 0 80px rgba(201,168,76,0.22);}
+.ben-pct sup{font-size:0.38em;vertical-align:top;margin-top:18px;display:inline-block;}
+.ben-badge{display:inline-block;font-size:8px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:4px 14px;margin-bottom:16px;}
+.ben-featured h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;margin-bottom:12px;line-height:1.1;}
+.ben-featured h3 em{font-style:italic;color:var(--gold-light);}
+.ben-featured p{font-size:10px;letter-spacing:0.1em;line-height:2;color:var(--muted);max-width:440px;}
+
+/* CONCIERGE */
+.ben-concierge{background:var(--surface);border:1px solid var(--border-s);padding:22px 36px;margin-bottom:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ben-concierge-lbl{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
+.city-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.city-pill{font-size:9px;letter-spacing:0.13em;color:var(--muted);border:1px solid var(--border-s);padding:7px 16px;transition:all 0.25s;}
+.city-pill:hover{border-color:var(--gold-dim);color:var(--white);}
+
+/* JET CARD */
+.jc-label{font-size:8px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.jc-label::before{content:'';width:16px;height:1px;background:var(--gold);}
+.jc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.jc-card{background:var(--surface);padding:30px 28px;position:relative;overflow:hidden;transition:background 0.3s;}
+.jc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.35s;}
+.jc-card:hover{background:var(--surface2);}.jc-card:hover::after{transform:scaleX(1);}
+.jc-icon{font-size:22px;margin-bottom:14px;}
+.jc-title{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--white);margin-bottom:6px;font-weight:400;}
+.jc-desc{font-size:9px;letter-spacing:0.07em;line-height:1.8;color:var(--muted);}
+
+/* CTA SECTION */
+.q-cta-section{
+  background:linear-gradient(160deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02) 50%,rgba(201,168,76,0.06));
+  border-top:1px solid var(--border);
+  padding:90px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:48px;flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.q-cta-section::before{content:'';position:absolute;left:-80px;top:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);pointer-events:none;}
+.q-cta-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1.05;margin-bottom:14px;}
+.q-cta-text h2 em{font-style:italic;color:var(--gold-light);}
+.q-cta-text p{font-size:10px;letter-spacing:0.12em;line-height:2.1;color:var(--muted);max-width:440px;}
+.q-cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
+.q-steps{display:flex;gap:2px;}
+.q-step-pip{width:44px;height:3px;background:var(--border-s);position:relative;overflow:hidden;}
+.q-step-pip::after{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:pipFill 0.5s ease forwards;}
+.q-step-pip:nth-child(1)::after{animation-delay:0.2s;}
+.q-step-pip:nth-child(2)::after{animation-delay:0.5s;}
+.q-step-pip:nth-child(3)::after{animation-delay:0.8s;}
+.q-step-pip:nth-child(4)::after{animation-delay:1.1s;}
+@keyframes pipFill{to{transform:scaleX(1);}}
+.q-steps-label{font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted2);}
+.btn-start-big{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:18px 52px;cursor:pointer;font-weight:400;transition:all 0.3s;display:flex;align-items:center;gap:12px;}
+.btn-start-big::after{content:'→';font-size:14px;}
+.btn-start-big:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 14px 44px rgba(201,168,76,0.28);}
+
+/* FOOTER */
+footer{background:var(--deep);border-top:1px solid var(--border);padding:52px 60px;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:52px;}
+.f-logo img{height:36px;object-fit:contain;margin-bottom:14px;display:block;}
+.f-tagline{font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted2);}
+.f-slogan{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:var(--gold-dim);margin-top:10px;}
+.f-col h4{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-col a{font-size:10px;letter-spacing:0.09em;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.f-col a:hover{color:var(--white);}
+.f-bottom{background:var(--deep);border-top:1px solid rgba(201,168,76,0.07);padding:18px 60px;display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ══════════════════════════════════
+   OVERLAY
+══════════════════════════════════ */
+#q-overlay{position:fixed;inset:0;z-index:500;background:var(--black);display:none;flex-direction:column;overflow:hidden;}
+#q-overlay.open{display:flex;}
+.q-header{display:flex;align-items:center;justify-content:space-between;padding:18px 52px;border-bottom:1px solid rgba(201,168,76,0.1);background:rgba(7,7,10,0.98);backdrop-filter:blur(10px);flex-shrink:0;position:relative;}
+.q-header-logo img{height:34px;object-fit:contain;}
+.q-header-title{position:absolute;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);pointer-events:none;}
+.q-close{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted2);background:none;border:1px solid var(--border-s);padding:8px 18px;cursor:pointer;font-family:'Josefin Sans',sans-serif;transition:all 0.3s;}
+.q-close:hover{color:var(--white);border-color:var(--gold-dim);}
+
+.q-screen{display:none;flex:1;flex-direction:column;overflow:hidden;}
+.q-screen.active{display:flex;}
+
+/* SCREEN 0 */
+#sc-benefits{overflow-y:auto;padding:44px 52px 100px;}
+#sc-benefits::-webkit-scrollbar{width:3px;}.sc-inner{max-width:860px;margin:0 auto;}
+.sc-hero{text-align:center;margin-bottom:44px;}
+.sc-eyebrow{font-size:9px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:16px;}
+.sc-eyebrow::before,.sc-eyebrow::after{content:'';width:36px;height:1px;background:var(--gold);opacity:0.55;}
+.sc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,42px);font-weight:300;line-height:1.05;margin-bottom:10px;}
+.sc-title em{font-style:italic;color:var(--gold-light);}
+.sc-sub{font-size:10px;letter-spacing:0.13em;line-height:2;color:var(--muted);max-width:420px;margin:0 auto;}
+.sc-featured{background:linear-gradient(135deg,rgba(201,168,76,0.09),rgba(201,168,76,0.03),rgba(201,168,76,0.07));border:1px solid rgba(201,168,76,0.25);padding:38px 44px;margin-bottom:14px;display:flex;align-items:center;gap:44px;flex-wrap:wrap;position:relative;overflow:hidden;}
+.sc-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.sc-pct{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,10vw,100px);font-weight:300;color:var(--gold);line-height:0.85;flex-shrink:0;text-shadow:0 0 60px rgba(201,168,76,0.2);}
+.sc-pct sup{font-size:0.38em;vertical-align:top;margin-top:12px;display:inline-block;}
+.sc-feat-text .sc-badge{display:inline-block;font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:3px 12px;margin-bottom:10px;}
+.sc-feat-text h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;margin-bottom:7px;}
+.sc-feat-text h3 em{font-style:italic;color:var(--gold-light);}
+.sc-feat-text p{font-size:10px;letter-spacing:0.09em;line-height:2;color:var(--muted);}
+.sc-concierge{background:var(--surface);border:1px solid var(--border-s);padding:18px 30px;margin-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.sc-lbl{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
+.sc-cities{display:flex;flex-wrap:wrap;gap:7px;}
+.sc-city{font-size:9px;letter-spacing:0.12em;color:var(--muted);border:1px solid var(--border-s);padding:6px 14px;transition:all 0.2s;}
+.sc-city:hover{border-color:var(--gold-dim);color:var(--white);}
+.sc-jc-lbl{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sc-jc-lbl::before{content:'';width:14px;height:1px;background:var(--gold);}
+.sc-jc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:22px;}
+.sc-jc{background:var(--surface);padding:22px 20px;position:relative;transition:background 0.25s;}
+.sc-jc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;}
+.sc-jc:hover{background:var(--surface2);}.sc-jc:hover::after{transform:scaleX(1);}
+.sc-jc-icon{font-size:18px;margin-bottom:9px;}
+.sc-jc-title{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);margin-bottom:4px;font-weight:400;}
+.sc-jc-desc{font-size:8px;letter-spacing:0.07em;line-height:1.7;color:var(--muted);}
+.sc-cta{background:linear-gradient(90deg,rgba(201,168,76,0.08),transparent);border:1px solid rgba(201,168,76,0.2);padding:22px 30px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.sc-cta p{font-size:10px;letter-spacing:0.1em;line-height:1.9;color:var(--muted);}
+.sc-cta strong{color:var(--white);font-weight:400;}
+.btn-quiz-start{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:13px 38px;cursor:pointer;font-weight:400;transition:all 0.3s;display:flex;align-items:center;gap:9px;white-space:nowrap;flex-shrink:0;}
+.btn-quiz-start::after{content:'→';}.btn-quiz-start:hover{background:var(--gold-light);transform:translateX(3px);}
+
+/* SCREEN 1: QUIZ */
+#sc-quiz{flex:1;overflow:hidden;}
+.q-progress{padding:0 52px;background:rgba(7,7,10,0.9);flex-shrink:0;}
+.q-prog-track{display:flex;align-items:center;justify-content:space-between;padding:15px 0;position:relative;}
+.q-prog-track::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border-s);transform:translateY(-50%);z-index:0;}
+.q-prog-line{position:absolute;top:50%;left:0;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:translateY(-50%);z-index:1;transition:width 0.55s cubic-bezier(0.4,0,0.2,1);}
+.q-dot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;}
+.q-dot-c{width:28px;height:28px;border-radius:50%;border:1px solid var(--border-s);background:var(--black);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--muted2);transition:all 0.4s;font-family:'Josefin Sans',sans-serif;}
+.q-dot-lbl{font-size:7px;letter-spacing:0.17em;text-transform:uppercase;color:var(--muted2);transition:color 0.4s;white-space:nowrap;}
+.q-dot.active .q-dot-c{border-color:var(--gold);background:var(--gold);color:var(--black);font-weight:600;box-shadow:0 0 16px rgba(201,168,76,0.35);}
+.q-dot.active .q-dot-lbl{color:var(--gold);}
+.q-dot.done .q-dot-c{border-color:var(--gold);background:transparent;color:var(--gold);}
+.q-dot.done .q-dot-lbl{color:var(--muted);}
+.q-slider-outer{flex:1;overflow:hidden;}
+.q-slider-track{display:flex;height:100%;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
+.q-slide{min-width:100%;height:100%;overflow-y:auto;padding:44px 52px 110px;display:flex;flex-direction:column;}
+.q-slide::-webkit-scrollbar{width:3px;}.q-slide::-webkit-scrollbar-thumb{background:var(--gold-dim);}
+.q-slide-inner{max-width:800px;width:100%;margin:0 auto;opacity:0;transform:translateX(26px);transition:opacity 0.46s ease 0.1s,transform 0.46s ease 0.1s;}
+.q-slide.is-active .q-slide-inner{opacity:1;transform:translateX(0);}
+.q-eyebrow{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;display:flex;align-items:center;gap:11px;}
+.q-eyebrow::before{content:'';width:18px;height:1px;background:var(--gold);}
+.q-stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,42px);font-weight:300;line-height:1.05;margin-bottom:6px;}
+.q-stitle em{font-style:italic;color:var(--gold-light);}
+.q-ssub{font-size:10px;letter-spacing:0.12em;line-height:1.9;color:var(--muted);margin-bottom:32px;max-width:480px;border-left:2px solid var(--gold-dim);padding-left:12px;}
+.qb{margin-bottom:26px;}
+.qb-title{font-size:9px;letter-spacing:0.27em;text-transform:uppercase;color:var(--white);margin-bottom:4px;display:flex;align-items:center;gap:9px;}
+.qb-title::before{content:'';width:12px;height:1px;background:var(--gold);}
+.qb-sub{font-size:8px;letter-spacing:0.14em;color:var(--muted2);margin-bottom:11px;}
+.q-note{font-size:8px;letter-spacing:0.13em;color:var(--gold-dim);margin-left:7px;}
+.qdiv{height:1px;background:var(--border-s);margin:20px 0;}
+input[type=text],input[type=email],input[type=tel],input[type=number],textarea{background:rgba(255,255,255,0.025);border:none;border-bottom:1px solid rgba(201,168,76,0.17);color:var(--white);padding:10px 4px;font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:0.07em;width:100%;outline:none;transition:border-color 0.3s;}
+input:focus,textarea:focus{border-bottom-color:var(--gold);}
+input::placeholder,textarea::placeholder{color:var(--muted2);font-size:11px;}
+textarea{resize:vertical;min-height:62px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:13px;}
+.fr.full{grid-template-columns:1fr;}
+.fw{display:flex;flex-direction:column;gap:6px;}
+.fw label{font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted2);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{display:flex;align-items:flex-start;gap:8px;padding:10px 15px;border:1px solid var(--border-s);font-size:10px;letter-spacing:0.08em;color:var(--muted);cursor:pointer;transition:all 0.2s;user-select:none;position:relative;overflow:hidden;line-height:1.5;}
+.chip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.07),transparent);opacity:0;transition:opacity 0.2s;}
+.chip:hover{border-color:var(--gold-dim);color:var(--white);}.chip:hover::before{opacity:1;}
+.chip.sel{border-color:var(--gold);color:var(--white);background:rgba(201,168,76,0.06);}.chip.sel::before{opacity:1;}
+.ck{width:13px;height:13px;border:1px solid var(--gold-dim);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all 0.2s;margin-top:1px;}
+.chip.sel .ck{background:var(--gold);border-color:var(--gold);color:var(--black);}
+.chip.radio .ck{border-radius:50%;}
+.cdesc{font-size:8px;letter-spacing:0.05em;color:var(--muted2);display:block;margin-top:2px;}
+.chips-sm{display:flex;flex-wrap:wrap;gap:6px;}
+.csm{display:flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--border-s);font-size:9px;letter-spacing:0.1em;color:var(--muted);cursor:pointer;transition:all 0.2s;user-select:none;}
+.csm:hover{border-color:var(--gold-dim);color:var(--white);}.csm.sel{border-color:var(--gold);color:var(--white);background:rgba(201,168,76,0.06);}
+.csm .ck{width:11px;height:11px;border:1px solid var(--gold-dim);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:7px;color:transparent;transition:all 0.2s;flex-shrink:0;}
+.csm.sel .ck{background:var(--gold);border-color:var(--gold);color:var(--black);}
+.csm.radio .ck{border-radius:50%;}
+.q-nav{position:fixed;bottom:0;left:0;right:0;z-index:600;display:none;align-items:center;justify-content:space-between;padding:15px 52px;background:linear-gradient(to top,rgba(7,7,10,1) 50%,transparent);pointer-events:none;}
+.q-nav.visible{display:flex;}.q-nav > *{pointer-events:all;}
+.btn-back{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted2);background:none;border:none;cursor:pointer;font-family:'Josefin Sans',sans-serif;display:flex;align-items:center;gap:8px;transition:color 0.3s;padding:0;}
+.btn-back::before{content:'←';color:var(--gold);}.btn-back:hover{color:var(--white);}.btn-back:disabled{opacity:0;pointer-events:none;}
+.q-count{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted2);}
+.q-count em{color:var(--gold);font-style:normal;}
+.btn-next{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:12px 34px;cursor:pointer;font-weight:400;transition:all 0.3s;display:flex;align-items:center;gap:8px;}
+.btn-next::after{content:'→';}.btn-next:hover{background:var(--gold-light);transform:translateX(3px);}
+#q-success{display:none;position:fixed;inset:0;z-index:700;background:var(--black);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;}
+#q-success.show{display:flex;}
+.s-ring{width:72px;height:72px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;animation:ringPulse 2.2s ease infinite;}
+@keyframes ringPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.25);}50%{box-shadow:0 0 0 14px rgba(201,168,76,0);}}
+.s-check{font-size:24px;color:var(--gold);}
+.s-eyebrow{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;margin-bottom:12px;}
+.s-title em{font-style:italic;color:var(--gold-light);}
+.s-body{font-size:10px;letter-spacing:0.1em;line-height:2;color:var(--muted);max-width:420px;margin-bottom:36px;}
+.s-logo img{height:36px;opacity:0.6;}
+
+@media(max-width:900px){
+  nav{padding:14px 22px;}.nav-links{display:none;}
+  .hero-title{font-size:46px;}.corner{display:none;}
+  .benefits-strip{flex-direction:column;align-items:stretch;}
+  .strip-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.1);}
+  .section{padding:64px 24px;}
+  .ben-featured{padding:32px 24px;gap:28px;}
+  .jc-grid,.sc-jc-grid{grid-template-columns:1fr;}
+  .ben-concierge,.sc-concierge{flex-direction:column;align-items:flex-start;}
+  .q-cta-section{padding:64px 24px;flex-direction:column;align-items:flex-start;}
+  .q-cta-right{align-items:flex-start;}
+  footer{grid-template-columns:1fr;padding:40px 24px;}
+  .f-bottom{padding:16px 24px;flex-direction:column;gap:6px;text-align:center;}
+  .q-header{padding:14px 22px;}.q-header-title{display:none;}
+  .q-progress{padding:0 22px;}.q-dot-lbl{display:none;}
+  #sc-benefits{padding:28px 22px 100px;}
+  .q-slide{padding:28px 22px 100px;}
+  .q-nav{padding:12px 22px;}
+  .fr{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
+  <ul class="nav-links">
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#membresia">Membresía</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openQ()">Unirme al Club</button>
+</nav>
+
+<!-- HERO — puro negro y dorado -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-lines">
+    <div class="h-vline h-vline-l"></div>
+    <div class="h-vline h-vline-r"></div>
+  </div>
+  <!-- corner brackets -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="hero-content">
+    <div class="hero-logo">
+      <img src="data:image/jpeg;base64,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" alt="Fly Select">
+    </div>
+    <p class="hero-tagline">You Belong Here</p>
+    <p class="hero-badge">Club de Aviación Privada</p>
+    <h1 class="hero-title">Volar a otro<br><em>nivel</em></h1>
+    <p class="hero-sub">Acceso exclusivo. Servicio sin compromisos.<br>Diseñado para quienes exigen lo mejor.</p>
+    <div class="hero-actions">
+      <button class="btn-gold" onclick="openQ()">Unirme al Club</button>
+      <button class="btn-ghost" onclick="document.getElementById('beneficios').scrollIntoView({behavior:'smooth'})">Ver Beneficios</button>
+    </div>
+  </div>
+  <div class="scroll-ind">Descubrir</div>
+</section>
+
+<!-- STRIP -->
+<div class="benefits-strip">
+  <div class="strip-item"><span class="strip-icon">✦</span>75% Descuento Empty Legs</div>
+  <div class="strip-item"><span class="strip-icon">✦</span>Catering Incluido</div>
+  <div class="strip-item"><span class="strip-icon">✦</span>Disponibilidad 24/7</div>
+  <div class="strip-item"><span class="strip-icon">✦</span>Mascotas Bienvenidas</div>
+  <div class="strip-item"><span class="strip-icon">✦</span>Flota Global</div>
+  <div class="strip-item"><span class="strip-icon">✦</span>Concierge 360°</div>
+</div>
+
+<!-- BENEFITS -->
+<section class="section" id="beneficios">
+  <div class="reveal">
+    <p class="section-label">Club Fly Select®</p>
+    <h2 class="section-title">Sus beneficios <em>exclusivos</em></h2>
+    <p class="section-desc">Todo lo que viene incluido en su membresía. Aviación privada sin concesiones.</p>
+  </div>
+  <div class="ben-featured reveal">
+    <div class="ben-pct"><sup>%</sup>75</div>
+    <div>
+      <span class="ben-badge">Beneficio Estrella</span>
+      <h3>Descuento en <em>Empty Legs</em></h3>
+      <p>Acceda a vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros Fly Select.</p>
+    </div>
+  </div>
+  <div class="ben-concierge reveal">
+    <span class="ben-concierge-lbl">Concierge Traslado</span>
+    <div class="city-pills">
+      <span class="city-pill">✈ Ciudad de México</span>
+      <span class="city-pill">✈ Cancún</span>
+      <span class="city-pill">✈ Puerto Vallarta</span>
+      <span class="city-pill">✈ Miami</span>
+      <span class="city-pill">✈ Los Cabos</span>
+    </div>
+  </div>
+  <div class="jc-label reveal">Beneficios Jet Card incluidos</div>
+  <div class="jc-grid">
+    <div class="jc-card reveal"><div class="jc-icon">🍽️</div><div class="jc-title">Catering Premium</div><div class="jc-desc">Incluido en todos los vuelos. Menú y bebidas de primera.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">⚡</div><div class="jc-title">Disponibilidad 24/7</div><div class="jc-desc">Garantizada con tiempo de respuesta corto.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🌐</div><div class="jc-title">Flota Global</div><div class="jc-desc">Múltiples categorías en destinos internacionales.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🥂</div><div class="jc-title">Bebidas Premium</div><div class="jc-desc">Vinos, espumosos y espirituosas a bordo.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🐾</div><div class="jc-title">Mascotas Bienvenidas</div><div class="jc-desc">Sin restricciones ni cargos adicionales.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">✨</div><div class="jc-title">Amenidades de Lujo</div><div class="jc-desc">Seleccionadas según duración del vuelo.</div></div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="q-cta-section" id="membresia">
+  <div class="q-cta-text reveal">
+    <p class="section-label">Cuestionario Premium</p>
+    <h2>Diseñemos su experiencia<br><em>a su medida</em></h2>
+    <p>4 bloques. Menos de 3 minutos. Su asesor diseñará una propuesta completamente personalizada.</p>
+  </div>
+  <div class="q-cta-right reveal">
+    <div class="q-steps">
+      <div class="q-step-pip"></div><div class="q-step-pip"></div>
+      <div class="q-step-pip"></div><div class="q-step-pip"></div>
+    </div>
+    <span class="q-steps-label">4 bloques · ~3 minutos</span>
+    <button class="btn-start-big" onclick="openQ()">Comenzar Ahora</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div>
+    <div class="f-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
+    <p class="f-tagline">Club de Aviación Privada Premium</p>
+    <p class="f-slogan">You Belong Here</p>
+  </div>
+  <div class="f-col"><h4>Club</h4><ul>
+    <li><a href="#" onclick="openQ();return false;">Cuestionario Premium</a></li>
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#membresia">Membresía</a></li>
+  </ul></div>
+  <div class="f-col"><h4>Legal</h4><ul>
+    <li><a href="#">Privacidad</a></li>
+    <li><a href="#">Términos</a></li>
+    <li><a href="#">Confidencialidad</a></li>
+  </ul></div>
+</footer>
+<div class="f-bottom">
+  <span class="f-copy">© 2025 Fly Select®. Todos los derechos reservados.</span>
+  <span class="f-copy">You Belong Here</span>
+</div>
+
+<!-- OVERLAY -->
+<div id="q-overlay">
+  <div class="q-header">
+    <div class="q-header-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
+    <span class="q-header-title" id="q-htitle">Beneficios de Membresía</span>
+    <button class="q-close" onclick="closeQ()">✕ Cerrar</button>
+  </div>
+
+  <!-- SCREEN 0: BENEFITS -->
+  <div class="q-screen active" id="sc-benefits">
+    <div class="sc-inner">
+      <div class="sc-hero">
+        <p class="sc-eyebrow">Club Fly Select® — Membresía Premium</p>
+        <h2 class="sc-title">Sus beneficios <em>exclusivos</em></h2>
+        <p class="sc-sub">Todo lo que viene incluido antes de comenzar su cuestionario personalizado.</p>
+      </div>
+      <div class="sc-featured">
+        <div class="sc-pct"><sup>%</sup>75</div>
+        <div class="sc-feat-text">
+          <span class="sc-badge">Beneficio Estrella</span>
+          <h3>Descuento en <em>Empty Legs</em></h3>
+          <p>Vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros.</p>
+        </div>
+      </div>
+      <div class="sc-concierge">
+        <span class="sc-lbl">Concierge Traslado</span>
+        <div class="sc-cities">
+          <span class="sc-city">✈ Ciudad de México</span>
+          <span class="sc-city">✈ Cancún</span>
+          <span class="sc-city">✈ Puerto Vallarta</span>
+          <span class="sc-city">✈ Miami</span>
+          <span class="sc-city">✈ Los Cabos</span>
+        </div>
+      </div>
+      <div class="sc-jc-lbl">Beneficios Jet Card incluidos</div>
+      <div class="sc-jc-grid">
+        <div class="sc-jc"><div class="sc-jc-icon">🍽️</div><div class="sc-jc-title">Catering Premium</div><div class="sc-jc-desc">Incluido en todos los vuelos.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">⚡</div><div class="sc-jc-title">Disponibilidad 24/7</div><div class="sc-jc-desc">Garantizada, respuesta inmediata.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🌐</div><div class="sc-jc-title">Flota Global</div><div class="sc-jc-desc">Múltiples categorías internacionales.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🥂</div><div class="sc-jc-title">Bebidas Premium</div><div class="sc-jc-desc">Vinos, espumosos y espirituosas.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🐾</div><div class="sc-jc-title">Mascotas Bienvenidas</div><div class="sc-jc-desc">Sin restricciones ni cargos extra.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">✨</div><div class="sc-jc-title">Amenidades de Lujo</div><div class="sc-jc-desc">Seleccionadas según duración.</div></div>
+      </div>
+      <div class="sc-cta">
+        <p><strong>¿Listo para su propuesta personalizada?</strong><br>4 bloques · menos de 3 minutos · un asesor diseñará su experiencia ideal.</p>
+        <button class="btn-quiz-start" onclick="goToQuiz()">Comenzar Cuestionario</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 1: QUIZ -->
+  <div class="q-screen" id="sc-quiz">
+    <div class="q-progress">
+      <div class="q-prog-track" id="q-track">
+        <div class="q-prog-line" id="q-line" style="width:0%"></div>
+        <div class="q-dot active" onclick="qGoTo(0)"><div class="q-dot-c">01</div><span class="q-dot-lbl">Perfil</span></div>
+        <div class="q-dot" onclick="qGoTo(1)"><div class="q-dot-c">02</div><span class="q-dot-lbl">Operativa</span></div>
+        <div class="q-dot" onclick="qGoTo(2)"><div class="q-dot-c">03</div><span class="q-dot-lbl">Filosofía</span></div>
+        <div class="q-dot" onclick="qGoTo(3)"><div class="q-dot-c">04</div><span class="q-dot-lbl">Alianza</span></div>
+      </div>
+    </div>
+    <div class="q-slider-outer">
+    <div class="q-slider-track" id="q-slider">
+
+      <!-- BLOQUE I -->
+      <div class="q-slide is-active" id="qs-0">
+      <div class="q-slide-inner">
+        <p class="q-eyebrow">Bloque I de IV</p>
+        <h2 class="q-stitle">Perfil de <em>Usuario</em></h2>
+        <p class="q-ssub">Buscamos entender su posición y forma de vida para ofrecerle la solución más precisa.</p>
+        <div class="fr"><div class="fw"><label>Nombre completo *</label><input id="f-name" type="text" placeholder="Ej. Carlos Mendoza"></div><div class="fw"><label>Teléfono (con código de país) *</label><input id="f-phone" type="tel" placeholder="+52 55 1234 5678"></div></div>
+        <div class="fr"><div class="fw"><label>Email corporativo *</label><input id="f-email" type="email" placeholder="nombre@empresa.com"></div><div class="fw"><label>Ciudad y país de residencia</label><input id="f-city" type="text" placeholder="Ciudad de México, México"></div></div>
+        <div class="qdiv"></div>
+        <div class="qb">
+          <div class="qb-title">Perfil de Cliente</div>
+          <div class="qb-sub">Seleccione el que mejor le describe</div>
+          <div class="chips">
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Alta Dirección / CEO</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Family Office / Gestión Patrimonial</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Private Client</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Emprendedor / Ejecutivo Senior</span></div></div>
+          </div>
+        </div>
+      </div></div>
+
+      <!-- BLOQUE II -->
+      <div class="q-slide" id="qs-1">
+      <div class="q-slide-inner">
+        <p class="q-eyebrow">Bloque II de IV</p>
+        <h2 class="q-stitle">Operativa de <em>Vuelo</em></h2>
+        <p class="q-ssub">Nos permite calcular la aeronave ideal y la rentabilidad de su membresía.</p>
+        <div class="qb">
+          <div class="qb-title">Alcance y Frecuencia</div>
+          <div class="fr full" style="margin-bottom:14px;"><div class="fw"><label>Rutas recurrentes</label><input id="f-routes" type="text" placeholder="Ej: Toluca – Houston / Madrid – Niza"></div></div>
+          <div class="qb-sub">Horas de vuelo anuales estimadas</div>
+          <div class="chips-sm">
+            <div class="csm radio" data-g="horas"><div class="ck">✓</div>&lt; 25h</div>
+            <div class="csm radio" data-g="horas"><div class="ck">✓</div>25–50h</div>
+            <div class="csm radio" data-g="horas"><div class="ck">✓</div>50–100h</div>
+            <div class="csm radio" data-g="horas"><div class="ck">✓</div>&gt; 100h</div>
+          </div>
+        </div>
+        <div class="qdiv"></div>
+        <div class="qb">
+          <div class="qb-title">Configuración de Cabina</div>
+          <div class="fr" style="margin-bottom:0;align-items:end;">
+            <div class="fw"><label>Pasajeros promedio</label><input id="f-passengers" type="number" placeholder="Ej: 4" min="1" max="30" style="max-width:130px;"></div>
+            <div class="fw"><label>Naturaleza del viaje</label>
+              <div class="chips-sm" style="margin-top:7px;">
+                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Corporativo</div>
+                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Familiar</div>
+                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Lifestyle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="qdiv"></div>
+        <div class="qb">
+          <div class="qb-title">Preferencia de Aeronave</div>
+          <div class="qb-sub">Puede seleccionar más de una</div>
+          <div class="chips">
+            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Light / Super Light</span><span class="cdesc">Trayectos cortos y eficientes</span></div></div>
+            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Mid-Size / Super Mid</span><span class="cdesc">Balance entre alcance y confort</span></div></div>
+            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Heavy / Ultra Long Range</span><span class="cdesc">Vuelos transcontinentales</span></div></div>
+            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Helitáctica</span><span class="cdesc">Movilidad urbana / regional</span></div></div>
+          </div>
+        </div>
+      </div></div>
+
+      <!-- BLOQUE III -->
+      <div class="q-slide" id="qs-2">
+      <div class="q-slide-inner">
+        <p class="q-eyebrow">Bloque III de IV</p>
+        <h2 class="q-stitle">Filosofía de <em>Viaje</em></h2>
+        <p class="q-ssub">Aquí es donde se diferencia el servicio masivo del servicio verdaderamente exclusivo.</p>
+        <div class="qb">
+          <div class="qb-title">Pilares de Valor <span class="q-note">— Seleccione 2</span></div>
+          <div class="qb-sub">¿Qué define una experiencia de vuelo perfecta para usted?</div>
+          <div class="chips">
+            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Privacidad</span><span class="cdesc">Protocolos discretos de llegada y salida</span></div></div>
+            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Tiempo</span><span class="cdesc">Disponibilidad inmediata y rapidez en trámites</span></div></div>
+            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Experiencia</span><span class="cdesc">Gastronomía a bordo y diseño de interiores</span></div></div>
+          </div>
+        </div>
+        <div class="qdiv"></div>
+        <div class="qb">
+          <div class="qb-title">Situación Actual</div>
+          <div class="qb-sub">¿Cómo vuela hoy?</div>
+          <div class="chips">
+            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Vuelo comercial</span><span class="cdesc">Busca transición a aviación privada</span></div></div>
+            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Charter bajo demanda</span><span class="cdesc">Busca mayor consistencia y servicio</span></div></div>
+            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Propietario / Fracción</span><span class="cdesc">Busca apoyo operativo o flota alterna</span></div></div>
+          </div>
+        </div>
+      </div></div>
+
+      <!-- BLOQUE IV -->
+      <div class="q-slide" id="qs-3">
+      <div class="q-slide-inner">
+        <p class="q-eyebrow">Bloque IV de IV</p>
+        <h2 class="q-stitle">Alianza <em>Select</em></h2>
+        <p class="q-ssub">Seleccione sus intereses de membresía y defina su protocolo de contacto preferente.</p>
+        <div class="qb">
+          <div class="qb-title">Intereses de Membresía</div>
+          <div class="chips">
+            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Acceso a flota exclusiva y Upgrades</span></div></div>
+            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Experiencias de conducción y lanzamientos</span></div></div>
+            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Servicio de Concierge 360°</span><span class="cdesc">Hoteles, eventos y experiencias</span></div></div>
+          </div>
+        </div>
+        <div class="qdiv"></div>
+        <div class="qb">
+          <div class="qb-title">Protocolo de Contacto</div>
+          <div class="qb-sub" style="margin-bottom:12px;">¿Desea una consultoría de diseño de rutas?</div>
+          <div class="chips-sm" style="margin-bottom:16px;">
+            <div class="csm radio" data-g="cons"><div class="ck">✓</div>Sí, deseo ser contactado</div>
+            <div class="csm radio" data-g="cons"><div class="ck">✓</div>Más adelante</div>
+          </div>
+          <div class="qb-sub">Horario preferente</div>
+          <div class="chips-sm">
+            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Mañana</div>
+            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Tarde</div>
+            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Noche</div>
+          </div>
+        </div>
+        <div class="qdiv"></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:24px;">
+          <div id="priv-box" onclick="togglePrivacy()" style="width:17px;height:17px;border:1px solid var(--gold-dim);border-radius:2px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+            <span id="priv-tick" style="font-size:9px;color:var(--gold);display:none;">✓</span>
+          </div>
+          <p style="font-size:9px;letter-spacing:0.09em;line-height:1.9;color:var(--muted2);">Acepto que Fly Select trate esta información de forma confidencial para el diseño de una propuesta personalizada.</p>
+        </div>
+        <p id="q-error" style="display:none;font-size:9px;letter-spacing:0.13em;color:#e07a7a;margin-bottom:10px;line-height:1.7;"></p>
+        <button id="q-submit" class="btn-gold" style="width:100%;padding:16px;font-size:9px;letter-spacing:0.26em;display:flex;align-items:center;justify-content:center;gap:10px;" onclick="submitQ()">
+          Enviar Mi Solicitud →
+        </button>
+        <p style="font-size:8px;letter-spacing:0.11em;color:var(--muted2);text-align:center;margin-top:14px;line-height:1.8;">
+          Gracias por formar parte de esta experiencia exclusiva.<br>Un asesor Fly Select se pondrá en contacto para diseñar su forma ideal de volar.
+        </p>
+      </div></div>
+
+    </div></div>
+  </div>
+</div>
+
+<!-- Q NAV -->
+<div class="q-nav" id="q-nav">
+  <button class="btn-back" id="q-back" onclick="qPrev()" disabled>Anterior</button>
+  <span class="q-count">Bloque <em id="q-cur">1</em> de 4</span>
+  <button class="btn-next" id="q-next-btn" onclick="qNext()">Continuar</button>
+</div>
+
+<!-- SUCCESS -->
+<div id="q-success">
+  <div class="s-ring"><span class="s-check">✓</span></div>
+  <p class="s-eyebrow">Solicitud Enviada</p>
+  <h2 class="s-title">Gracias por su <em>confianza</em></h2>
+  <p class="s-body">Un asesor Fly Select se pondrá en contacto para diseñar su experiencia de aviación privada a la medida.</p>
+  <div class="s-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
+</div>
+
+<script>
+let qCur=0,onQuiz=false,privOk=false;const QT=4;
+function openQ(){document.getElementById('q-overlay').classList.add('open');document.body.style.overflow='hidden';showBen();}
+function closeQ(){document.getElementById('q-overlay').classList.remove('open');document.getElementById('q-nav').classList.remove('visible');document.body.style.overflow='';onQuiz=false;qCur=0;}
+function showBen(){onQuiz=false;document.getElementById('sc-benefits').classList.add('active');document.getElementById('sc-quiz').classList.remove('active');document.getElementById('q-nav').classList.remove('visible');document.getElementById('q-htitle').textContent='Beneficios de Membresía';document.getElementById('sc-benefits').scrollTop=0;}
+function goToQuiz(){onQuiz=true;qCur=0;document.getElementById('sc-benefits').classList.remove('active');document.getElementById('sc-quiz').classList.add('active');document.getElementById('q-nav').classList.add('visible');document.getElementById('q-htitle').textContent='Cuestionario Premium';qUI();}
+function qUI(){
+  document.getElementById('q-slider').style.transform=`translateX(-${qCur*100}%)`;
+  document.querySelectorAll('.q-slide').forEach((s,i)=>s.classList.toggle('is-active',i===qCur));
+  document.querySelectorAll('.q-dot').forEach((d,i)=>{d.classList.remove('active','done');if(i===qCur)d.classList.add('active');else if(i<qCur)d.classList.add('done');});
+  document.getElementById('q-line').style.width=(qCur===0?0:(qCur/(QT-1))*100)+'%';
+  document.getElementById('q-cur').textContent=qCur+1;
+  const back=document.getElementById('q-back');
+  back.disabled=false;back.textContent=qCur===0?'← Beneficios':'← Anterior';
+  const nx=document.getElementById('q-next-btn');
+  if(qCur===QT-1){nx.style.display='none';}
+  else{nx.style.display='flex';nx.innerHTML=(qCur===QT-2?'Último bloque ':'Continuar ')+'<span style="margin-left:3px;">→</span>';}
+  const sl=document.getElementById('qs-'+qCur);if(sl)sl.scrollTop=0;
+}
+function qNext(){if(qCur<QT-1){qCur++;qUI();}}
+function qPrev(){if(qCur===0){showBen();return;}qCur--;qUI();}
+function qGoTo(i){if(i<=qCur){qCur=i;qUI();}}
+document.querySelectorAll('.chip').forEach(c=>{c.addEventListener('click',function(){const g=this.dataset.g,max=parseInt(this.dataset.max||'999'),isR=this.classList.contains('radio');if(isR){document.querySelectorAll(`.chip[data-g="${g}"]`).forEach(x=>x.classList.remove('sel'));this.classList.add('sel');}else{const s=document.querySelectorAll(`.chip[data-g="${g}"].sel`);if(this.classList.contains('sel'))this.classList.remove('sel');else if(s.length<max)this.classList.add('sel');}});});
+document.querySelectorAll('.csm').forEach(c=>{c.addEventListener('click',function(){const g=this.dataset.g,isR=this.classList.contains('radio');if(isR){document.querySelectorAll(`.csm[data-g="${g}"]`).forEach(x=>x.classList.remove('sel'));this.classList.add('sel');}else this.classList.toggle('sel');});});
+function togglePrivacy(){privOk=!privOk;document.getElementById('priv-tick').style.display=privOk?'block':'none';document.getElementById('priv-box').style.borderColor=privOk?'var(--gold)':'var(--gold-dim)';}
+function chipText(el){return (el.querySelector('span:not(.cdesc)')||{}).textContent?.trim()||'';}
+function csmText(el){const c=el.cloneNode(true);c.querySelectorAll('.ck').forEach(n=>n.remove());return c.textContent.trim();}
+function pickRadio(g,fn){const el=document.querySelector(`.${fn===chipText?'chip':'csm'}[data-g="${g}"].sel`);return el?fn(el):'';}
+function pickMulti(g){return Array.from(document.querySelectorAll(`.chip[data-g="${g}"].sel`)).map(chipText).filter(Boolean);}
+async function submitQ(){
+  const err=document.getElementById('q-error');
+  const btn=document.getElementById('q-submit');
+  err.style.display='none';err.textContent='';
+  const payload={
+    name:document.getElementById('f-name').value.trim(),
+    phone:document.getElementById('f-phone').value.trim(),
+    email:document.getElementById('f-email').value.trim(),
+    city:document.getElementById('f-city').value.trim(),
+    profile:pickRadio('perfil',chipText),
+    routes:document.getElementById('f-routes').value.trim(),
+    annual_hours:pickRadio('horas',csmText),
+    passengers:document.getElementById('f-passengers').value.trim(),
+    trip_nature:pickRadio('nat',csmText),
+    aircraft:pickMulti('av'),
+    pillars:pickMulti('pilares'),
+    current_situation:pickRadio('sit',chipText),
+    interests:pickMulti('ben'),
+    consult:pickRadio('cons',csmText),
+    schedule:pickRadio('hor',csmText),
+    privacy_accepted:privOk,
+  };
+  if(!payload.name||!payload.phone||!payload.email){err.textContent='Por favor complete nombre, teléfono y email.';err.style.display='block';qCur=0;qUI();return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)){err.textContent='El email no es válido.';err.style.display='block';qCur=0;qUI();return;}
+  if(!privOk){err.textContent='Debe aceptar el aviso de privacidad para enviar.';err.style.display='block';return;}
+  btn.disabled=true;btn.style.opacity='0.6';btn.innerHTML='Enviando...';
+  try{
+    const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(d.error||'Error al enviar');
+    document.getElementById('q-success').classList.add('show');
+    document.getElementById('q-nav').classList.remove('visible');
+  }catch(e){
+    err.textContent=e.message||'No se pudo enviar. Intente de nuevo.';
+    err.style.display='block';
+    btn.disabled=false;btn.style.opacity='1';btn.innerHTML='Enviar Mi Solicitud →';
+  }
+}
+document.addEventListener('keydown',e=>{if(!document.getElementById('q-overlay').classList.contains('open'))return;if(e.key==='Escape')closeQ();if(!onQuiz)return;if(e.key==='ArrowRight'&&qCur<QT-1)qNext();if(e.key==='ArrowLeft')qPrev();});
+let tx=0;const so=document.querySelector('.q-slider-outer');
+if(so){so.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});so.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>46){if(dx<0&&qCur<QT-1)qNext();else if(dx>0)qPrev();}},{passive:true});}
+const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*65);});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('main-nav').style.boxShadow=window.scrollY>40?'0 4px 36px rgba(0,0,0,0.7)':'none';});
+</script>
+</body>
+</html>
