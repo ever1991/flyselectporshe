@@ -3,7 +3,8 @@ import { Resend } from 'resend';
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  { db: { schema: 'fly_select' } }
 );
 const resend = new Resend(process.env.RESEND_API_KEY);
 
