@@ -2,6 +2,7 @@
   "name": "fly-select",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Fly Select - Landing + cuestionario premium",
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
