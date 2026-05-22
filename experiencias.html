@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fly Select® — You Belong Here</title>
+<title>Fly Select® — Experiencias</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Josefin+Sans:wght@100;300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -42,6 +42,10 @@ nav{
   overflow:hidden;text-align:center;
   background:var(--black);
 }
+
+/* Hero background photo */
+.hero-photo{position:absolute;inset:0;z-index:0;background:url('assets/experiencias/exp-1.jpg') center/cover no-repeat;}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,10,0.60),rgba(7,7,10,0.80) 65%,rgba(7,7,10,0.95));}
 
 /* Radial gold glow */
 .hero-glow{
@@ -95,9 +99,8 @@ nav{
 
 .hero-logo{margin-bottom:40px;}
 .hero-logo img{
-  width:96px;height:96px;object-fit:cover;
-  border-radius:50%;border:1px solid var(--gold-dim);
-  box-shadow:0 0 32px rgba(201,168,76,0.4), 0 0 8px rgba(201,168,76,0.2);
+  height:80px;object-fit:contain;
+  filter:drop-shadow(0 0 32px rgba(201,168,76,0.4)) drop-shadow(0 0 8px rgba(201,168,76,0.2));
 }
 
 .hero-badge{
@@ -179,11 +182,11 @@ nav{
 
 /* ══ SECTIONS ══ */
 .section{padding:100px 60px;}
-.section-label{font-size:10px;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.section-label{font-size:11px;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
 .section-label::before{content:'';width:26px;height:1px;background:var(--gold);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(37px,4vw,60px);font-weight:300;line-height:1.08;margin-bottom:10px;}
 .section-title em{font-style:italic;color:var(--gold-light);}
-.section-desc{font-size:12px;letter-spacing:0.09em;line-height:2.1;color:var(--muted);max-width:520px;margin-bottom:52px;}
+.section-desc{font-size:14.5px;letter-spacing:0.09em;line-height:2.1;color:var(--muted);max-width:520px;margin-bottom:52px;}
 
 /* FEATURED */
 .ben-featured{
@@ -197,28 +200,28 @@ nav{
 .ben-featured::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07),transparent 70%);pointer-events:none;}
 .ben-pct{font-family:'Cormorant Garamond',serif;font-size:clamp(92px,12vw,150px);font-weight:300;color:var(--gold);line-height:0.85;flex-shrink:0;text-shadow:0 0 80px rgba(201,168,76,0.22);}
 .ben-pct sup{font-size:0.38em;vertical-align:top;margin-top:18px;display:inline-block;}
-.ben-badge{display:inline-block;font-size:9px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:4px 14px;margin-bottom:16px;}
-.ben-featured h3{font-family:'Cormorant Garamond',serif;font-size:35px;font-weight:300;margin-bottom:12px;line-height:1.1;}
+.ben-badge{display:inline-block;font-size:10.5px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:4px 14px;margin-bottom:16px;}
+.ben-featured h3{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;margin-bottom:12px;line-height:1.1;}
 .ben-featured h3 em{font-style:italic;color:var(--gold-light);}
-.ben-featured p{font-size:12px;letter-spacing:0.1em;line-height:2;color:var(--muted);max-width:440px;}
+.ben-featured p{font-size:14.5px;letter-spacing:0.1em;line-height:2;color:var(--muted);max-width:440px;}
 
 /* CONCIERGE */
 .ben-concierge{background:var(--surface);border:1px solid var(--border-s);padding:22px 36px;margin-bottom:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.ben-concierge-lbl{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
+.ben-concierge-lbl{font-size:10.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
 .city-pills{display:flex;flex-wrap:wrap;gap:8px;}
-.city-pill{font-size:10px;letter-spacing:0.13em;color:var(--muted);border:1px solid var(--border-s);padding:7px 16px;transition:all 0.25s;}
+.city-pill{font-size:11.5px;letter-spacing:0.13em;color:var(--muted);border:1px solid var(--border-s);padding:7px 16px;transition:all 0.25s;}
 .city-pill:hover{border-color:var(--gold-dim);color:var(--white);}
 
 /* JET CARD */
-.jc-label{font-size:9px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.jc-label{font-size:10.5px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
 .jc-label::before{content:'';width:16px;height:1px;background:var(--gold);}
 .jc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 .jc-card{background:var(--surface);padding:30px 28px;position:relative;overflow:hidden;transition:background 0.3s;}
 .jc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.35s;}
 .jc-card:hover{background:var(--surface2);}.jc-card:hover::after{transform:scaleX(1);}
 .jc-icon{font-size:25px;margin-bottom:14px;}
-.jc-title{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--white);margin-bottom:6px;font-weight:400;}
-.jc-desc{font-size:10px;letter-spacing:0.07em;line-height:1.8;color:var(--muted);}
+.jc-title{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--white);margin-bottom:6px;font-weight:400;}
+.jc-desc{font-size:12.5px;letter-spacing:0.07em;line-height:1.8;color:var(--muted);}
 
 /* CTA SECTION */
 .q-cta-section{
@@ -231,7 +234,7 @@ nav{
 .q-cta-section::before{content:'';position:absolute;left:-80px;top:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);pointer-events:none;}
 .q-cta-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(39px,4vw,62px);font-weight:300;line-height:1.05;margin-bottom:14px;}
 .q-cta-text h2 em{font-style:italic;color:var(--gold-light);}
-.q-cta-text p{font-size:12px;letter-spacing:0.12em;line-height:2.1;color:var(--muted);max-width:440px;}
+.q-cta-text p{font-size:13.5px;letter-spacing:0.12em;line-height:2.1;color:var(--muted);max-width:440px;}
 .q-cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
 .q-steps{display:flex;gap:2px;}
 .q-step-pip{width:44px;height:3px;background:var(--border-s);position:relative;overflow:hidden;}
@@ -258,7 +261,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:62px 60
 .f-offices{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 44px;}
 .f-office h4{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:11px;display:flex;align-items:center;gap:8px;}
 .f-office h4::before{content:'✈';font-size:10px;opacity:0.75;}
-.f-office p{font-size:12px;letter-spacing:0.06em;line-height:1.95;color:var(--muted);}
+.f-office p{font-size:13.5px;letter-spacing:0.06em;line-height:1.95;color:var(--muted);}
 .f-bottom{background:var(--deep);border-top:1px solid rgba(201,168,76,0.07);padding:18px 60px;display:flex;justify-content:space-between;align-items:center;}
 .f-copy{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);}
 /* WHATSAPP FAB */
@@ -291,7 +294,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:62px 60
 .sc-eyebrow::before,.sc-eyebrow::after{content:'';width:36px;height:1px;background:var(--gold);opacity:0.55;}
 .sc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,48px);font-weight:300;line-height:1.05;margin-bottom:10px;}
 .sc-title em{font-style:italic;color:var(--gold-light);}
-.sc-sub{font-size:12px;letter-spacing:0.13em;line-height:2;color:var(--muted);max-width:420px;margin:0 auto;}
+.sc-sub{font-size:13.5px;letter-spacing:0.13em;line-height:2;color:var(--muted);max-width:420px;margin:0 auto;}
 .sc-featured{background:linear-gradient(135deg,rgba(201,168,76,0.09),rgba(201,168,76,0.03),rgba(201,168,76,0.07));border:1px solid rgba(201,168,76,0.25);padding:38px 44px;margin-bottom:14px;display:flex;align-items:center;gap:44px;flex-wrap:wrap;position:relative;overflow:hidden;}
 .sc-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .sc-pct{font-family:'Cormorant Garamond',serif;font-size:clamp(74px,10vw,115px);font-weight:300;color:var(--gold);line-height:0.85;flex-shrink:0;text-shadow:0 0 60px rgba(201,168,76,0.2);}
@@ -421,11 +424,18 @@ textarea{resize:vertical;min-height:62px;}
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
-  <button class="nav-cta" onclick="openQ();goToQuiz()">Unirme al Club</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="beneficios.html">Beneficios</a></li>
+    <li><a href="experiencias.html">Experiencias</a></li>
+    <li><a href="#membresia">Membresía</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openQ()">Unirme al Club</button>
 </nav>
 
-<!-- HERO — puro negro y dorado -->
-<section class="hero">
+<!-- HEADER de página -->
+<section class="hero" style="height:auto;min-height:72vh;padding:150px 20px 90px;">
+  <div class="hero-photo"></div>
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div class="hero-lines">
@@ -443,13 +453,12 @@ textarea{resize:vertical;min-height:62px;}
       <img src="data:image/jpeg;base64,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" alt="Fly Select">
     </div>
     <p class="hero-tagline">You Belong Here</p>
-    <p class="hero-badge">Club de Aviación Privada</p>
-    <h1 class="hero-title">Volar a otro<br><em>nivel</em></h1>
-    <p class="hero-sub">Acceso exclusivo. Servicio sin compromisos.<br>Diseñado para quienes exigen lo mejor.</p>
+    <p class="hero-badge">Experiencias Fly Select®</p>
+    <h1 class="hero-title">Experiencias<br><em>a su medida</em></h1>
+    <p class="hero-sub">Momentos diseñados para quienes exigen lo mejor.<br>Cada vuelo, una experiencia única.</p>
     <div class="hero-actions">
-      <button class="btn-gold" onclick="openQ();goToQuiz()">Unirme al Club</button>
-      <button class="btn-ghost" onclick="location.href='beneficios.html'">Ver Beneficios</button>
-      <button class="btn-ghost" onclick="location.href='experiencias.html'">Experiencias</button>
+      <button class="btn-gold" onclick="openQ()">Unirme al Club</button>
+      <button class="btn-ghost" onclick="location.href='index.html'">Volver al inicio</button>
     </div>
   </div>
   <div class="scroll-ind">
@@ -458,8 +467,29 @@ textarea{resize:vertical;min-height:62px;}
   </div>
 </section>
 
+<!-- EXPERIENCIAS (placeholder — pendiente contenido del cliente) -->
+<section class="section" id="experiencias">
+  <p class="section-label">Experiencias Curadas</p>
+  <h2 class="section-title">Cada viaje, una <em>experiencia</em></h2>
+  <p class="section-desc">Aquí irá el contenido de las experiencias. En cuanto me pases la información (textos, fotos y orden) la voy armando en esta sección.</p>
+</section>
 
-
+<!-- CTA SECTION -->
+<div class="q-cta-section" id="membresia">
+  <div class="q-cta-text reveal">
+    <p class="section-label">Cuestionario Premium</p>
+    <h2>Diseñemos su experiencia<br><em>a su medida</em></h2>
+    <p>4 bloques. Menos de 3 minutos. Su asesor diseñará una propuesta completamente personalizada.</p>
+  </div>
+  <div class="q-cta-right reveal">
+    <div class="q-steps">
+      <div class="q-step-pip"></div><div class="q-step-pip"></div>
+      <div class="q-step-pip"></div><div class="q-step-pip"></div>
+    </div>
+    <span class="q-steps-label">4 bloques · ~3 minutos</span>
+    <button class="btn-start-big" onclick="openQ()">Comenzar Ahora</button>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer id="contacto">
