@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fly Select® — Beyond the Experience</title>
+<title data-i18n="ben.title">Fly Select® — Beyond the Experience</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Josefin+Sans:wght@100;300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -33,6 +33,10 @@ nav{
 .nav-links a:hover{color:var(--gold);}
 .nav-cta{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:10px 24px;background:none;cursor:pointer;font-family:'Josefin Sans',sans-serif;transition:all 0.3s;}
 .nav-cta:hover{background:var(--gold);color:var(--black);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-lang{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border-s);padding:9px 12px;background:none;cursor:pointer;font-family:'Josefin Sans',sans-serif;transition:all 0.3s;min-width:42px;}
+.nav-lang:hover{color:var(--gold);border-color:var(--gold-dim);}
+@media (max-width:640px){.nav-right{gap:8px;}.nav-lang{padding:8px 10px;font-size:9px;min-width:36px;}}
 
 /* ══ HERO — pure black/gold, no image ══ */
 .hero{
@@ -421,11 +425,14 @@ textarea{resize:vertical;min-height:62px;}
 <nav id="main-nav">
   <div class="nav-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
   <ul class="nav-links">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="#beneficios">Beneficios</a></li>
-    <li><a href="#membresia">Membresía</a></li>
+    <li><a href="index.html" data-i18n="ben.nav.home">Inicio</a></li>
+    <li><a href="#beneficios" data-i18n="ben.nav.benefits">Beneficios</a></li>
+    <li><a href="#membresia" data-i18n="ben.nav.membership">Membresía</a></li>
   </ul>
-  <button class="nav-cta" onclick="openQ()">Unirme al Club</button>
+  <div class="nav-right">
+    <button class="nav-lang" data-i18n-toggle data-i18n-attr="aria-label:nav.toggle.aria" type="button">EN</button>
+    <button class="nav-cta" data-i18n="nav.cta" onclick="openQ()">Unirme al Club</button>
+  </div>
 </nav>
 
 <!-- HEADER de página -->
@@ -446,29 +453,29 @@ textarea{resize:vertical;min-height:62px;}
     <div class="hero-logo">
       <img src="data:image/jpeg;base64,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" alt="Fly Select">
     </div>
-    <p class="hero-tagline">Beyond the Experience</p>
-    <p class="hero-badge">Club Fly Select®</p>
-    <h1 class="hero-title">Sus beneficios<br><em>exclusivos</em></h1>
-    <p class="hero-sub">Todo lo que incluye su membresía.<br>Aviación privada sin límites.</p>
+    <p class="hero-tagline" data-i18n="home.hero.tagline">Beyond the Experience</p>
+    <p class="hero-badge" data-i18n="ben.hero.badge">Club Fly Select®</p>
+    <h1 class="hero-title" data-i18n-html="ben.hero.title">Sus beneficios<br><em>exclusivos</em></h1>
+    <p class="hero-sub" data-i18n-html="ben.hero.sub">Todo lo que incluye su membresía.<br>Aviación privada sin límites.</p>
     <div class="hero-actions">
-      <button class="btn-gold" onclick="openQ()">Unirme al Club</button>
-      <button class="btn-ghost" onclick="location.href='index.html'">Volver al inicio</button>
+      <button class="btn-gold" data-i18n="nav.cta" onclick="openQ()">Unirme al Club</button>
+      <button class="btn-ghost" data-i18n="ben.hero.cta.back" onclick="location.href='index.html'">Volver al inicio</button>
     </div>
   </div>
   <div class="scroll-ind">
     <span class="scroll-path"><svg class="sp-jet" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13 2 L13.5 9 L22 14 L22 16 L13.5 13 L13.5 19 L16 21 L16 22 L12 21 L8 22 L8 21 L10.5 19 L10.5 13 L2 16 L2 14 L10.5 9 L11 2 Z"/></svg></span>
-    Descubrir
+    <span data-i18n="home.hero.scroll">Descubrir</span>
   </div>
 </section>
 
 <!-- STRIP -->
 <div class="benefits-strip">
-  <div class="strip-item"><span class="strip-icon">✦</span>75% Descuento Empty Legs</div>
-  <div class="strip-item"><span class="strip-icon">✦</span>Catering Incluido</div>
-  <div class="strip-item"><span class="strip-icon">✦</span>Disponibilidad 24/7</div>
-  <div class="strip-item"><span class="strip-icon">✦</span>Mascotas Bienvenidas</div>
-  <div class="strip-item"><span class="strip-icon">✦</span>Flota Global</div>
-  <div class="strip-item"><span class="strip-icon">✦</span>Concierge 360°</div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.empty">75% Descuento Empty Legs</span></div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.catering">Catering Incluido</span></div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.avail">Disponibilidad 24/7</span></div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.pets">Mascotas Bienvenidas</span></div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.fleet">Flota Global</span></div>
+  <div class="strip-item"><span class="strip-icon">✦</span><span data-i18n="ben.strip.concierge">Concierge 360°</span></div>
 </div>
 
 <!-- BENEFITS -->
@@ -476,46 +483,46 @@ textarea{resize:vertical;min-height:62px;}
   <div class="ben-featured reveal">
     <div class="ben-pct">75<sup>%</sup></div>
     <div>
-      <span class="ben-badge">Beneficio Premium</span>
-      <h3>Beneficios en <em>Empty Legs</em></h3>
-      <p>Acceda a vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros Fly Select.</p>
+      <span class="ben-badge" data-i18n="ben.feat.badge">Beneficio Premium</span>
+      <h3 data-i18n-html="ben.feat.title">Beneficios en <em>Empty Legs</em></h3>
+      <p data-i18n="ben.feat.desc">Acceda a vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros Fly Select.</p>
     </div>
   </div>
   <div class="ben-concierge reveal">
-    <span class="ben-concierge-lbl">Concierge Traslado</span>
+    <span class="ben-concierge-lbl" data-i18n="quiz.ben.concierge.label">Concierge Traslado</span>
     <div class="city-pills">
-      <span class="city-pill">✈ Ciudad de México</span>
-      <span class="city-pill">✈ Cancún</span>
-      <span class="city-pill">✈ Puerto Vallarta</span>
-      <span class="city-pill">✈ Miami</span>
-      <span class="city-pill">✈ Los Cabos</span>
+      <span class="city-pill" data-i18n="quiz.ben.concierge.cdmx">✈ Ciudad de México</span>
+      <span class="city-pill" data-i18n="quiz.ben.concierge.cun">✈ Cancún</span>
+      <span class="city-pill" data-i18n="quiz.ben.concierge.pvr">✈ Puerto Vallarta</span>
+      <span class="city-pill" data-i18n="quiz.ben.concierge.mia">✈ Miami</span>
+      <span class="city-pill" data-i18n="quiz.ben.concierge.cabo">✈ Los Cabos</span>
     </div>
   </div>
-  <div class="jc-label reveal">Beneficios Jet Card incluidos</div>
+  <div class="jc-label reveal" data-i18n="quiz.ben.jc.label">Beneficios Jet Card incluidos</div>
   <div class="jc-grid">
-    <div class="jc-card reveal"><div class="jc-icon">🍽️</div><div class="jc-title">Catering Premium</div><div class="jc-desc">Incluido en todos los vuelos. Menú y bebidas de primera.</div></div>
-    <div class="jc-card reveal"><div class="jc-icon">⚡</div><div class="jc-title">Disponibilidad 24/7</div><div class="jc-desc">Garantizada con tiempo de respuesta corto.</div></div>
-    <div class="jc-card reveal"><div class="jc-icon">🌐</div><div class="jc-title">Flota Global</div><div class="jc-desc">Múltiples categorías en destinos internacionales.</div></div>
-    <div class="jc-card reveal"><div class="jc-icon">🥂</div><div class="jc-title">Bebidas Premium</div><div class="jc-desc">Vinos, espumosos y espirituosas a bordo.</div></div>
-    <div class="jc-card reveal"><div class="jc-icon">🐾</div><div class="jc-title">Mascotas Bienvenidas</div><div class="jc-desc">Sin restricciones ni cargos adicionales.</div></div>
-    <div class="jc-card reveal"><div class="jc-icon">✨</div><div class="jc-title">Amenidades de Lujo</div><div class="jc-desc">Seleccionadas según duración del vuelo.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🍽️</div><div class="jc-title" data-i18n="quiz.ben.jc.catering.title">Catering Premium</div><div class="jc-desc" data-i18n="ben.jc.catering.desc">Incluido en todos los vuelos. Menú y bebidas de primera.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">⚡</div><div class="jc-title" data-i18n="quiz.ben.jc.avail.title">Disponibilidad 24/7</div><div class="jc-desc" data-i18n="ben.jc.avail.desc">Garantizada con tiempo de respuesta corto.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🌐</div><div class="jc-title" data-i18n="quiz.ben.jc.fleet.title">Flota Global</div><div class="jc-desc" data-i18n="ben.jc.fleet.desc">Múltiples categorías en destinos internacionales.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🥂</div><div class="jc-title" data-i18n="quiz.ben.jc.drinks.title">Bebidas Premium</div><div class="jc-desc" data-i18n="ben.jc.drinks.desc">Vinos, espumosos y espirituosas a bordo.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">🐾</div><div class="jc-title" data-i18n="quiz.ben.jc.pets.title">Mascotas Bienvenidas</div><div class="jc-desc" data-i18n="ben.jc.pets.desc">Sin restricciones ni cargos adicionales.</div></div>
+    <div class="jc-card reveal"><div class="jc-icon">✨</div><div class="jc-title" data-i18n="quiz.ben.jc.amen.title">Amenidades de Lujo</div><div class="jc-desc" data-i18n="ben.jc.amen.desc">Seleccionadas según duración del vuelo.</div></div>
   </div>
 </section>
 
 <!-- CTA SECTION -->
 <div class="q-cta-section" id="membresia">
   <div class="q-cta-text reveal">
-    <p class="section-label">Cuestionario Premium</p>
-    <h2>Diseñemos su experiencia<br><em>a su medida</em></h2>
-    <p>4 bloques. Menos de 3 minutos. Su asesor diseñará una propuesta completamente personalizada.</p>
+    <p class="section-label" data-i18n="ben.cta.label">Cuestionario Premium</p>
+    <h2 data-i18n-html="ben.cta.title">Diseñemos su experiencia<br><em>a su medida</em></h2>
+    <p data-i18n="ben.cta.desc">4 bloques. Menos de 3 minutos. Su asesor diseñará una propuesta completamente personalizada.</p>
   </div>
   <div class="q-cta-right reveal">
     <div class="q-steps">
       <div class="q-step-pip"></div><div class="q-step-pip"></div>
       <div class="q-step-pip"></div><div class="q-step-pip"></div>
     </div>
-    <span class="q-steps-label">4 bloques · ~3 minutos</span>
-    <button class="btn-start-big" onclick="openQ()">Comenzar Ahora</button>
+    <span class="q-steps-label" data-i18n="ben.cta.steps">4 bloques · ~3 minutos</span>
+    <button class="btn-start-big" data-i18n="ben.cta.btn" onclick="openQ()">Comenzar Ahora</button>
   </div>
 </div>
 
@@ -523,27 +530,27 @@ textarea{resize:vertical;min-height:62px;}
 <footer id="contacto">
   <div class="f-brand">
     <div class="f-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
-    <p class="f-tagline">Club de Aviación Privada Premium</p>
-    <p class="f-slogan">Beyond the Experience</p>
+    <p class="f-tagline" data-i18n="footer.tagline">Club de Aviación Privada Premium</p>
+    <p class="f-slogan" data-i18n="footer.slogan">Beyond the Experience</p>
     <div class="f-social">
       <a href="https://www.facebook.com/flyselectslp" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
       <a href="https://www.instagram.com/fly_select_/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4zm6.41-10.85a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/></svg></a>
     </div>
   </div>
   <div class="f-offices">
-    <div class="f-office"><h4>Centro de Aviación</h4><p>San Pedro Totoltepec,<br>50226 Toluca de Lerdo,<br>Méx.</p></div>
-    <div class="f-office"><h4>Oficinas México</h4><p>Vega de la Plata 112<br>Lomas del Tecnológico,<br>San Luis Potosí, SLP, México</p></div>
-    <div class="f-office"><h4>Oficinas Cancún</h4><p>Blvd. Puerto Cancún, Centro Diomeda, Office 305, Av. Puerto Cancún,<br>Cancún, QROO, México</p></div>
-    <div class="f-office"><h4>Oficinas EE.UU.</h4><p>848 Brickell Ave, Suite 950,<br>Miami, FL, EUA.</p></div>
+    <div class="f-office"><h4 data-i18n="footer.office.aviation.title">Centro de Aviación</h4><p data-i18n-html="footer.office.aviation.addr">San Pedro Totoltepec,<br>50226 Toluca de Lerdo,<br>Méx.</p></div>
+    <div class="f-office"><h4 data-i18n="footer.office.mx.title">Oficinas México</h4><p data-i18n-html="footer.office.mx.addr">Vega de la Plata 112<br>Lomas del Tecnológico,<br>San Luis Potosí, SLP, México</p></div>
+    <div class="f-office"><h4 data-i18n="footer.office.cun.title">Oficinas Cancún</h4><p data-i18n-html="footer.office.cun.addr">Blvd. Puerto Cancún, Centro Diomeda, Office 305, Av. Puerto Cancún,<br>Cancún, QROO, México</p></div>
+    <div class="f-office"><h4 data-i18n="footer.office.us.title">Oficinas EE.UU.</h4><p data-i18n-html="footer.office.us.addr">848 Brickell Ave, Suite 950,<br>Miami, FL, EUA.</p></div>
   </div>
 </footer>
 <div class="f-bottom">
-  <span class="f-copy">© 2026 Fly Select®. Todos los derechos reservados.</span>
-  <span class="f-copy">Beyond the Experience</span>
+  <span class="f-copy" data-i18n="footer.copy">© 2026 Fly Select®. Todos los derechos reservados.</span>
+  <span class="f-copy" data-i18n="footer.copy.slogan">Beyond the Experience</span>
 </div>
 
 <!-- WHATSAPP FAB -->
-<a class="wa-fab" href="https://wa.me/525573351068?text=Hola%2C%20me%20interesa%20Fly%20Select" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+<a class="wa-fab" href="https://wa.me/525573351068?text=Hola%2C%20me%20interesa%20Fly%20Select" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-i18n-attr="aria-label:common.wa.aria">
   <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.5 9.5 0 01-4.83-1.32l-.35-.21-3.59.94.96-3.5-.23-.36a9.46 9.46 0 01-1.45-5.05c0-5.24 4.27-9.5 9.51-9.5 2.54 0 4.92.99 6.72 2.78a9.43 9.43 0 012.78 6.73c0 5.24-4.27 9.49-9.5 9.49zM20.52 3.49A11.45 11.45 0 0012.05 0C5.5 0 .16 5.33.16 11.89c0 2.09.55 4.14 1.59 5.94L.06 24l6.32-1.66a11.86 11.86 0 005.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.42-8.4z"/></svg>
 </a>
 
@@ -551,48 +558,48 @@ textarea{resize:vertical;min-height:62px;}
 <div id="q-overlay">
   <div class="q-header">
     <div class="q-header-logo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBhUQBxMWFRAVGRUbGRUVGSAWEBwgIB0iIiAdHx8kKDQsJCYxJx8fLTotMT00MENDIys9QDQ1QDQuMEABCgoKDQ0OFxAQFTcbGCU3NywxKysrNys3Ky0wNzctLSsrLS4rKys3NzctNy0rNzcrNysrKy0rLSsrKys3Ny0rLf/AABEIAMgAyAMBIgACEQEDEQH/xAAcAAEBAAIDAQEAAAAAAAAAAAAAAQUHAgQGAwj/xAA5EAACAgECBAIIBAUDBQAAAAAAAQIDBAURBhIhUTFBBxMiMmFxgZEUwdHwFSRTobEzYpIWI0JUk//EABoBAQADAQEBAAAAAAAAAAAAAAABAwQCBQb/xAAkEQEBAAIBBAEEAwAAAAAAAAAAAQIRAwQSITFBEzJRYSNxgf/aAAwDAQACEQMRAD8A0yAAAAApAAAAAFIAAAAAACkAAAAAUgAAAAAAKCAAAAKQAAAABSAAAAAAApAAAAAFIAAAAAACkAAAACkAAAAAUEAAAAAVJt9ABD1Gi8C6tqaUrUqYPzn7/wBI/rsewwfRTp8o/wA1fY3/ALVGC/vuZ8+q4sfFruceV+Gpwbln6HdMuh/LZFsX3kozX2Wx5jiD0T8Q6XW54XLk1r+nurf+D8fo2MOq4svEqLhY8CUTjKE2pppp7NPo0Q0OQAAACgCAAAAABQBAAABSAAAAAKBa6522KNabk3skvFmy+E+G6NNirMlKV78/FR+C/U89wRp0ZTd9q8Okfzf5fc2Binl9Z1F32Y/618PF47qy+KZfFPJ6lr+Hoc6/x6koWNrnS3ittvHz8/Lseo0y+rLojZjSUoSW6lF7xZh7MpJbPCy2emaxeplILZGOxFsZKK2RCrJ4r0gej3B4px3bipV5iXSa6Rn/ALZ9/n4r+x+ds3DyMDLlTmRcLINxlF+KaP1+jUfp24YhPFhqWKtpxcYW7eafuyfyfT6rsb+k6iy9mXpVnj8tKgFPUVIAAAAAApAAAAApAAAAAFAgAA2TwxWq9IrS84p/fr+Z6bFSPL8J3K7SK9vJbP6PY9Tinz3Lv6mW/wAvTx+2OWt6LVrukyos6PxhLtJeD/L6muNC4j1fgjPsosipJNqVUn7Kl5STX7aNt48lFe0ap03DhxJxndbeualTnJ9mt2or99jX0uU7Mpn9sZuWbs17dqfpE4w1nIVWlvllLooUV7zf1e7+x7ng/g7jO26N/EWoZFS8fVRtc7H8Hu3FfZ/QxOi23+jnPldVX63T7WvWbJO+rs9/Nfvo/HbGi65pmuYys0q2NkfPlftL4NeK+pPLyax/jxnb+Vfbd+WRitkYTjnFhmcG5cJ/0bWvnGLkv7pGbbUVvLol5mr/AEo+kXTsfSrMLRpq2+2LhOUHvXCL6S6+b23XTwM3DhllnNRNvhokAHvKAAAAUgAAAAAAAAAAAUgAAAAeo4I1D1OS6JvpLrH5+a+q/wAGwKLJdzTNVk6rFKt7STTTRtHhrVa9WwlJbKcek12ff5M8rruHV756rZwcm521msy6dOnWTj1lGE2u/RNmL4D0n8HgJTXtP2p/N+C/fxM5St0d3DqhTHatbIxTOzHtW2edu9RTCScZpOL6NPqmvNM1X6QeELuGMpZejuUceb29ltSrk/Lfs/L7fPbOP7yMhqOmU6zoduPkLeNkJLr5Pbo/o9n9C3g5bx5fpTyY7j8zZWralmV8uXfbOPac5SX2bOmAe5JPhkAASBSAAAAAAAoIAAAApAAAAAFIAB3dH1O/Sc1WUfJrya7M6QIyxlmqmXV3G69E1HH1TDVuK90/FeafZmao8TR3D2t5Oh5vPT1g/eg/CS/X4m5tD1LF1XDjbhy3i/Ff+SfZrueL1HT3ju59rZhyd0/bN4/iTi7Xq+HuFrbpPaxxcK15uclsvt4/Q6ubqWLpOG7s6SjXHxfm/gl5s0txlxVlcUahzW+zTDdV19l3fdsnpeC8mW76jjly1HngAe0yhSAAAAAAApAAAAApAAAAAFBAAAAAFAGV4c17K0DOVmP1i/fg/dkv17MxIOcsZlNVMuvTN8UcSZXEOZzW+zVH3K0+i+L7v4mEAGOMxmoW2+woIdIAAAAKAIAAAAAFAEAAAFIB9sTFyM3IVeHCVlj32jCLlN7Ld7JdfA71nDevVVuVmJkKKTbbpmkkvFt7Ha4IyVicSQnLdJRu8OkutUl0+4z9VxLMVrCszOd/1LVKv47pJeRXcr3ajrXjbC1491lMp1xk4Q25pJNxju9lu/LdnGuE7bFGtNybSSS3bb8EkZzQ3bPQMyqlOUpqjpFbt7Wb+BjFXmaXkwsnCUJRkpR54tdU0/Px8iZlu2I142+P4a/8T6rkl63m5eTZ8/Nvty7eO+/TY4WQnXNxsTUk9mmtmn2aPXfxLS1P+Keql+J9Z/pc3/Z9b73rN/Hbz5e/wPJ5N88nIlZb70pSk/m3uxjlb8Fmnd03QdX1Slz03Httgns5QhKUd+26Rw1PR9S0lxWp02Vc2/L6yLhvt47b/NHrND1a2zhqrHury1CqVjjPFnyKXNLd83fZ7oxPGVai6ZRtvkpRk/V5E+e2HX8/yK5y3u7XVw8bdaHCHEk4Jww8hp9U1VLb/B0LdK1CnUVjW1TWQ3FKpxas3fgtvHqbF1nPjfkxb/H/AOnWv5ezlp6RXgu55DSL8injameW7OZWwe9rcrdt+m7fw2Iw5rlLU3DVYC2udNrjcmpRbTT6NNeKZ3dM0PVdVrctMottjF7N1wckvg9jsa3p2fPUrrXVPkc7Jc2z225m9z0HBuYquGL636/rbB7Y8uW7ou/Y6y5dY7iJhd6ea1Hh/WdMx/Wajj21Q3S5pwlGO/bdjTuHtZ1PH9Zp2NdZXvtzQhKUd+26RkuKrL50R9X+M9Vv7Syp88d/Lb+5383M1e3hvCho8rVGELFJVSaW/N57Mj6t1P2dnl5jUdJ1HS7Yw1KmyqUlvFTi4t/Lc7//AEdxN/6WR/8AKX6HR1SWqO2P8VlY5bey7G3Lb4bnodN1/UlwflKV9rm50csnZLmXXrs9+h1lllJLESedPLZmLkYWTKvMhKFkekoyXLJfNHxOd91uRa53ycpPxlJtyfzbOBb/AG5AUgAAAAUgAAAWLcXvEgKBYTnD3G18ugnZOfvtv5vc4gjUF3fLt5diAEj6wyciuO1c5Jdk2kcLLJ2y3sbb7t7shCNRO32WXkpdLJf8mcHbY7OZyfN339r7nADU/BuvtLKyZR2lOTT8nJnGq+6pbVSa+TaPmUahuvpZkXWx2slJrs22iV5F1UdqpSS7JtHzA1Ddc7LbLXvbJt/F7kU5qDSb2fit+hxA0gBSEgAAAAAAAAAAKQAAAABSAAAAAAApAAAAAFIAAAAAACggAAACkAAAAAUgAAAAAAKQAAAABSAAAAAAApAAAAApAAAAAFAAgAAAACkAAAAAUACAAAAAKQAAAAAAA//Z" alt="Fly Select"></div>
-    <span class="q-header-title" id="q-htitle">Beneficios de Membresía</span>
-    <button class="q-close" onclick="closeQ()">✕ Cerrar</button>
+    <span class="q-header-title" id="q-htitle" data-i18n="quiz.header.benefits">Beneficios de Membresía</span>
+    <button class="q-close" data-i18n="quiz.close" onclick="closeQ()">✕ Cerrar</button>
   </div>
 
   <!-- SCREEN 0: BENEFITS -->
   <div class="q-screen active" id="sc-benefits">
     <div class="sc-inner">
       <div class="sc-hero">
-        <p class="sc-eyebrow">Club Fly Select® — Membresía Premium</p>
-        <h2 class="sc-title">Sus beneficios <em>exclusivos</em></h2>
-        <p class="sc-sub">Todo lo que viene incluido antes de comenzar su cuestionario personalizado.</p>
+        <p class="sc-eyebrow" data-i18n="quiz.ben.eyebrow">Club Fly Select® — Membresía Premium</p>
+        <h2 class="sc-title" data-i18n-html="quiz.ben.title">Sus beneficios <em>exclusivos</em></h2>
+        <p class="sc-sub" data-i18n="quiz.ben.sub">Todo lo que viene incluido antes de comenzar su cuestionario personalizado.</p>
       </div>
       <div class="sc-featured">
         <div class="sc-pct"><sup>%</sup>75</div>
         <div class="sc-feat-text">
-          <span class="sc-badge">Beneficio Estrella</span>
-          <h3>Descuento en <em>Empty Legs</em></h3>
-          <p>Vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros.</p>
+          <span class="sc-badge" data-i18n="quiz.ben.feat.badge">Beneficio Estrella</span>
+          <h3 data-i18n-html="quiz.ben.feat.title">Descuento en <em>Empty Legs</em></h3>
+          <p data-i18n="quiz.ben.feat.desc">Vuelos de posicionamiento con hasta 75% de descuento. Rutas reales, aeronaves premium, precio exclusivo para miembros.</p>
         </div>
       </div>
       <div class="sc-concierge">
-        <span class="sc-lbl">Concierge Traslado</span>
+        <span class="sc-lbl" data-i18n="quiz.ben.concierge.label">Concierge Traslado</span>
         <div class="sc-cities">
-          <span class="sc-city">✈ Ciudad de México</span>
-          <span class="sc-city">✈ Cancún</span>
-          <span class="sc-city">✈ Puerto Vallarta</span>
-          <span class="sc-city">✈ Miami</span>
-          <span class="sc-city">✈ Los Cabos</span>
+          <span class="sc-city" data-i18n="quiz.ben.concierge.cdmx">✈ Ciudad de México</span>
+          <span class="sc-city" data-i18n="quiz.ben.concierge.cun">✈ Cancún</span>
+          <span class="sc-city" data-i18n="quiz.ben.concierge.pvr">✈ Puerto Vallarta</span>
+          <span class="sc-city" data-i18n="quiz.ben.concierge.mia">✈ Miami</span>
+          <span class="sc-city" data-i18n="quiz.ben.concierge.cabo">✈ Los Cabos</span>
         </div>
       </div>
-      <div class="sc-jc-lbl">Beneficios Jet Card incluidos</div>
+      <div class="sc-jc-lbl" data-i18n="quiz.ben.jc.label">Beneficios Jet Card incluidos</div>
       <div class="sc-jc-grid">
-        <div class="sc-jc"><div class="sc-jc-icon">🍽️</div><div class="sc-jc-title">Catering Premium</div><div class="sc-jc-desc">Incluido en todos los vuelos.</div></div>
-        <div class="sc-jc"><div class="sc-jc-icon">⚡</div><div class="sc-jc-title">Disponibilidad 24/7</div><div class="sc-jc-desc">Garantizada, respuesta inmediata.</div></div>
-        <div class="sc-jc"><div class="sc-jc-icon">🌐</div><div class="sc-jc-title">Flota Global</div><div class="sc-jc-desc">Múltiples categorías internacionales.</div></div>
-        <div class="sc-jc"><div class="sc-jc-icon">🥂</div><div class="sc-jc-title">Bebidas Premium</div><div class="sc-jc-desc">Vinos, espumosos y espirituosas.</div></div>
-        <div class="sc-jc"><div class="sc-jc-icon">🐾</div><div class="sc-jc-title">Mascotas Bienvenidas</div><div class="sc-jc-desc">Sin restricciones ni cargos extra.</div></div>
-        <div class="sc-jc"><div class="sc-jc-icon">✨</div><div class="sc-jc-title">Amenidades de Lujo</div><div class="sc-jc-desc">Seleccionadas según duración.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🍽️</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.catering.title">Catering Premium</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.catering.desc">Incluido en todos los vuelos.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">⚡</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.avail.title">Disponibilidad 24/7</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.avail.desc">Garantizada, respuesta inmediata.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🌐</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.fleet.title">Flota Global</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.fleet.desc">Múltiples categorías internacionales.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🥂</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.drinks.title">Bebidas Premium</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.drinks.desc">Vinos, espumosos y espirituosas.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">🐾</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.pets.title">Mascotas Bienvenidas</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.pets.desc">Sin restricciones ni cargos extra.</div></div>
+        <div class="sc-jc"><div class="sc-jc-icon">✨</div><div class="sc-jc-title" data-i18n="quiz.ben.jc.amen.title">Amenidades de Lujo</div><div class="sc-jc-desc" data-i18n="quiz.ben.jc.amen.desc">Seleccionadas según duración.</div></div>
       </div>
       <div class="sc-cta">
-        <p><strong>¿Listo para su propuesta personalizada?</strong><br>4 bloques · menos de 3 minutos · un asesor diseñará su experiencia ideal.</p>
-        <button class="btn-quiz-start" onclick="goToQuiz()">Comenzar Cuestionario</button>
+        <p data-i18n-html="quiz.ben.cta.text"><strong>¿Listo para su propuesta personalizada?</strong><br>4 bloques · menos de 3 minutos · un asesor diseñará su experiencia ideal.</p>
+        <button class="btn-quiz-start" data-i18n="quiz.ben.cta.btn" onclick="goToQuiz()">Comenzar Cuestionario</button>
       </div>
     </div>
   </div>
@@ -602,10 +609,10 @@ textarea{resize:vertical;min-height:62px;}
     <div class="q-progress">
       <div class="q-prog-track" id="q-track">
         <div class="q-prog-line" id="q-line" style="width:0%"></div>
-        <div class="q-dot active" onclick="qGoTo(0)"><div class="q-dot-c">01</div><span class="q-dot-lbl">Perfil</span></div>
-        <div class="q-dot" onclick="qGoTo(1)"><div class="q-dot-c">02</div><span class="q-dot-lbl">Operativa</span></div>
-        <div class="q-dot" onclick="qGoTo(2)"><div class="q-dot-c">03</div><span class="q-dot-lbl">Filosofía</span></div>
-        <div class="q-dot" onclick="qGoTo(3)"><div class="q-dot-c">04</div><span class="q-dot-lbl">Alianza</span></div>
+        <div class="q-dot active" onclick="qGoTo(0)"><div class="q-dot-c">01</div><span class="q-dot-lbl" data-i18n="quiz.dot.profile">Perfil</span></div>
+        <div class="q-dot" onclick="qGoTo(1)"><div class="q-dot-c">02</div><span class="q-dot-lbl" data-i18n="quiz.dot.ops">Operativa</span></div>
+        <div class="q-dot" onclick="qGoTo(2)"><div class="q-dot-c">03</div><span class="q-dot-lbl" data-i18n="quiz.dot.phil">Filosofía</span></div>
+        <div class="q-dot" onclick="qGoTo(3)"><div class="q-dot-c">04</div><span class="q-dot-lbl" data-i18n="quiz.dot.alliance">Alianza</span></div>
       </div>
     </div>
     <div class="q-slider-outer">
@@ -614,20 +621,20 @@ textarea{resize:vertical;min-height:62px;}
       <!-- BLOQUE I -->
       <div class="q-slide is-active" id="qs-0">
       <div class="q-slide-inner">
-        <p class="q-eyebrow">Bloque I de IV</p>
-        <h2 class="q-stitle">Perfil de <em>Usuario</em></h2>
-        <p class="q-ssub">Buscamos entender su posición y forma de vida para ofrecerle la solución más precisa.</p>
-        <div class="fr"><div class="fw"><label>Nombre completo *</label><input id="f-name" type="text" placeholder="Ej. Carlos Mendoza"></div><div class="fw"><label>Teléfono (con código de país) *</label><input id="f-phone" type="tel" placeholder="+52 55 1234 5678"></div></div>
-        <div class="fr"><div class="fw"><label>Email corporativo *</label><input id="f-email" type="email" placeholder="nombre@empresa.com"></div><div class="fw"><label>Ciudad y país de residencia</label><input id="f-city" type="text" placeholder="Ciudad de México, México"></div></div>
+        <p class="q-eyebrow" data-i18n="quiz.b1.eyebrow">Bloque I de IV</p>
+        <h2 class="q-stitle" data-i18n-html="quiz.b1.title">Perfil de <em>Usuario</em></h2>
+        <p class="q-ssub" data-i18n="quiz.b1.sub">Buscamos entender su posición y forma de vida para ofrecerle la solución más precisa.</p>
+        <div class="fr"><div class="fw"><label data-i18n="quiz.b1.f.name">Nombre completo *</label><input id="f-name" type="text" placeholder="Ej. Carlos Mendoza" data-i18n-attr="placeholder:quiz.b1.f.name.ph"></div><div class="fw"><label data-i18n="quiz.b1.f.phone">Teléfono (con código de país) *</label><input id="f-phone" type="tel" placeholder="+52 55 1234 5678" data-i18n-attr="placeholder:quiz.b1.f.phone.ph"></div></div>
+        <div class="fr"><div class="fw"><label data-i18n="quiz.b1.f.email">Email corporativo *</label><input id="f-email" type="email" placeholder="nombre@empresa.com" data-i18n-attr="placeholder:quiz.b1.f.email.ph"></div><div class="fw"><label data-i18n="quiz.b1.f.city">Ciudad y país de residencia</label><input id="f-city" type="text" placeholder="Ciudad de México, México" data-i18n-attr="placeholder:quiz.b1.f.city.ph"></div></div>
         <div class="qdiv"></div>
         <div class="qb">
-          <div class="qb-title">Perfil de Cliente</div>
-          <div class="qb-sub">Seleccione el que mejor le describe</div>
+          <div class="qb-title" data-i18n="quiz.b1.profile.title">Perfil de Cliente</div>
+          <div class="qb-sub" data-i18n="quiz.b1.profile.sub">Seleccione el que mejor le describe</div>
           <div class="chips">
-            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Alta Dirección / CEO</span></div></div>
-            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Family Office / Gestión Patrimonial</span></div></div>
-            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Private Client</span></div></div>
-            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span>Emprendedor / Ejecutivo Senior</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span data-i18n="quiz.b1.profile.ceo">Alta Dirección / CEO</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span data-i18n="quiz.b1.profile.family">Family Office / Gestión Patrimonial</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span data-i18n="quiz.b1.profile.private">Private Client</span></div></div>
+            <div class="chip radio" data-g="perfil"><div class="ck">✓</div><div><span data-i18n="quiz.b1.profile.exec">Emprendedor / Ejecutivo Senior</span></div></div>
           </div>
         </div>
       </div></div>
@@ -635,43 +642,43 @@ textarea{resize:vertical;min-height:62px;}
       <!-- BLOQUE II -->
       <div class="q-slide" id="qs-1">
       <div class="q-slide-inner">
-        <p class="q-eyebrow">Bloque II de IV</p>
-        <h2 class="q-stitle">Operativa de <em>Vuelo</em></h2>
-        <p class="q-ssub">Nos permite calcular la aeronave ideal y la rentabilidad de su membresía.</p>
+        <p class="q-eyebrow" data-i18n="quiz.b2.eyebrow">Bloque II de IV</p>
+        <h2 class="q-stitle" data-i18n-html="quiz.b2.title">Operativa de <em>Vuelo</em></h2>
+        <p class="q-ssub" data-i18n="quiz.b2.sub">Nos permite calcular la aeronave ideal y la rentabilidad de su membresía.</p>
         <div class="qb">
-          <div class="qb-title">Alcance y Frecuencia</div>
-          <div class="fr full" style="margin-bottom:14px;"><div class="fw"><label>Rutas recurrentes</label><input id="f-routes" type="text" placeholder="Ej: Toluca – Houston / Madrid – Niza"></div></div>
-          <div class="qb-sub">Horas de vuelo anuales estimadas</div>
+          <div class="qb-title" data-i18n="quiz.b2.scope.title">Alcance y Frecuencia</div>
+          <div class="fr full" style="margin-bottom:14px;"><div class="fw"><label data-i18n="quiz.b2.f.routes">Rutas recurrentes</label><input id="f-routes" type="text" placeholder="Ej: Toluca – Houston / Madrid – Niza" data-i18n-attr="placeholder:quiz.b2.f.routes.ph"></div></div>
+          <div class="qb-sub" data-i18n="quiz.b2.scope.sub">Horas de vuelo anuales estimadas</div>
           <div class="chips-sm">
-            <div class="csm radio" data-g="horas"><div class="ck">✓</div>&lt; 25h</div>
-            <div class="csm radio" data-g="horas"><div class="ck">✓</div>25–50h</div>
-            <div class="csm radio" data-g="horas"><div class="ck">✓</div>50–100h</div>
-            <div class="csm radio" data-g="horas"><div class="ck">✓</div>&gt; 100h</div>
+            <div class="csm radio" data-g="horas" data-key="quiz.b2.hours.lt25"><div class="ck">✓</div><span data-i18n="quiz.b2.hours.lt25">&lt; 25h</span></div>
+            <div class="csm radio" data-g="horas" data-key="quiz.b2.hours.25_50"><div class="ck">✓</div><span data-i18n="quiz.b2.hours.25_50">25–50h</span></div>
+            <div class="csm radio" data-g="horas" data-key="quiz.b2.hours.50_100"><div class="ck">✓</div><span data-i18n="quiz.b2.hours.50_100">50–100h</span></div>
+            <div class="csm radio" data-g="horas" data-key="quiz.b2.hours.gt100"><div class="ck">✓</div><span data-i18n="quiz.b2.hours.gt100">&gt; 100h</span></div>
           </div>
         </div>
         <div class="qdiv"></div>
         <div class="qb">
-          <div class="qb-title">Configuración de Cabina</div>
+          <div class="qb-title" data-i18n="quiz.b2.cabin.title">Configuración de Cabina</div>
           <div class="fr" style="margin-bottom:0;align-items:end;">
-            <div class="fw"><label>Pasajeros promedio</label><input id="f-passengers" type="number" placeholder="Ej: 4" min="1" max="30" style="max-width:130px;"></div>
-            <div class="fw"><label>Naturaleza del viaje</label>
+            <div class="fw"><label data-i18n="quiz.b2.f.pax">Pasajeros promedio</label><input id="f-passengers" type="number" placeholder="Ej: 4" min="1" max="30" style="max-width:130px;" data-i18n-attr="placeholder:quiz.b2.f.pax.ph"></div>
+            <div class="fw"><label data-i18n="quiz.b2.f.nature">Naturaleza del viaje</label>
               <div class="chips-sm" style="margin-top:7px;">
-                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Corporativo</div>
-                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Familiar</div>
-                <div class="csm radio" data-g="nat"><div class="ck">✓</div>Lifestyle</div>
+                <div class="csm radio" data-g="nat" data-key="quiz.b2.nature.corp"><div class="ck">✓</div><span data-i18n="quiz.b2.nature.corp">Corporativo</span></div>
+                <div class="csm radio" data-g="nat" data-key="quiz.b2.nature.family"><div class="ck">✓</div><span data-i18n="quiz.b2.nature.family">Familiar</span></div>
+                <div class="csm radio" data-g="nat" data-key="quiz.b2.nature.lifestyle"><div class="ck">✓</div><span data-i18n="quiz.b2.nature.lifestyle">Lifestyle</span></div>
               </div>
             </div>
           </div>
         </div>
         <div class="qdiv"></div>
         <div class="qb">
-          <div class="qb-title">Preferencia de Aeronave</div>
-          <div class="qb-sub">Puede seleccionar más de una</div>
+          <div class="qb-title" data-i18n="quiz.b2.av.title">Preferencia de Aeronave</div>
+          <div class="qb-sub" data-i18n="quiz.b2.av.sub">Puede seleccionar más de una</div>
           <div class="chips">
-            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Light / Super Light</span><span class="cdesc">Trayectos cortos y eficientes</span></div></div>
-            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Mid-Size / Super Mid</span><span class="cdesc">Balance entre alcance y confort</span></div></div>
-            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Heavy / Ultra Long Range</span><span class="cdesc">Vuelos transcontinentales</span></div></div>
-            <div class="chip" data-g="av"><div class="ck">✓</div><div><span>Helitáctica</span><span class="cdesc">Movilidad urbana / regional</span></div></div>
+            <div class="chip" data-g="av" data-key="quiz.b2.av.light"><div class="ck">✓</div><div><span data-i18n="quiz.b2.av.light">Light / Super Light</span><span class="cdesc" data-i18n="quiz.b2.av.light.desc">Trayectos cortos y eficientes</span></div></div>
+            <div class="chip" data-g="av" data-key="quiz.b2.av.mid"><div class="ck">✓</div><div><span data-i18n="quiz.b2.av.mid">Mid-Size / Super Mid</span><span class="cdesc" data-i18n="quiz.b2.av.mid.desc">Balance entre alcance y confort</span></div></div>
+            <div class="chip" data-g="av" data-key="quiz.b2.av.heavy"><div class="ck">✓</div><div><span data-i18n="quiz.b2.av.heavy">Heavy / Ultra Long Range</span><span class="cdesc" data-i18n="quiz.b2.av.heavy.desc">Vuelos transcontinentales</span></div></div>
+            <div class="chip" data-g="av" data-key="quiz.b2.av.heli"><div class="ck">✓</div><div><span data-i18n="quiz.b2.av.heli">Helitáctica</span><span class="cdesc" data-i18n="quiz.b2.av.heli.desc">Movilidad urbana / regional</span></div></div>
           </div>
         </div>
       </div></div>
@@ -679,26 +686,26 @@ textarea{resize:vertical;min-height:62px;}
       <!-- BLOQUE III -->
       <div class="q-slide" id="qs-2">
       <div class="q-slide-inner">
-        <p class="q-eyebrow">Bloque III de IV</p>
-        <h2 class="q-stitle">Filosofía de <em>Viaje</em></h2>
-        <p class="q-ssub">Aquí es donde se diferencia el servicio masivo del servicio verdaderamente exclusivo.</p>
+        <p class="q-eyebrow" data-i18n="quiz.b3.eyebrow">Bloque III de IV</p>
+        <h2 class="q-stitle" data-i18n-html="quiz.b3.title">Filosofía de <em>Viaje</em></h2>
+        <p class="q-ssub" data-i18n="quiz.b3.sub">Aquí es donde se diferencia el servicio masivo del servicio verdaderamente exclusivo.</p>
         <div class="qb">
-          <div class="qb-title">Pilares de Valor <span class="q-note">— Seleccione 2</span></div>
-          <div class="qb-sub">¿Qué define una experiencia de vuelo perfecta para usted?</div>
+          <div class="qb-title" data-i18n-html="quiz.b3.pillars.title">Pilares de Valor <span class="q-note">— Seleccione 2</span></div>
+          <div class="qb-sub" data-i18n="quiz.b3.pillars.sub">¿Qué define una experiencia de vuelo perfecta para usted?</div>
           <div class="chips">
-            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Privacidad</span><span class="cdesc">Protocolos discretos de llegada y salida</span></div></div>
-            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Tiempo</span><span class="cdesc">Disponibilidad inmediata y rapidez en trámites</span></div></div>
-            <div class="chip" data-g="pilares" data-max="2"><div class="ck">✓</div><div><span>Experiencia</span><span class="cdesc">Gastronomía a bordo y diseño de interiores</span></div></div>
+            <div class="chip" data-g="pilares" data-max="2" data-key="quiz.b3.pillars.privacy"><div class="ck">✓</div><div><span data-i18n="quiz.b3.pillars.privacy">Privacidad</span><span class="cdesc" data-i18n="quiz.b3.pillars.privacy.desc">Protocolos discretos de llegada y salida</span></div></div>
+            <div class="chip" data-g="pilares" data-max="2" data-key="quiz.b3.pillars.time"><div class="ck">✓</div><div><span data-i18n="quiz.b3.pillars.time">Tiempo</span><span class="cdesc" data-i18n="quiz.b3.pillars.time.desc">Disponibilidad inmediata y rapidez en trámites</span></div></div>
+            <div class="chip" data-g="pilares" data-max="2" data-key="quiz.b3.pillars.exp"><div class="ck">✓</div><div><span data-i18n="quiz.b3.pillars.exp">Experiencia</span><span class="cdesc" data-i18n="quiz.b3.pillars.exp.desc">Gastronomía a bordo y diseño de interiores</span></div></div>
           </div>
         </div>
         <div class="qdiv"></div>
         <div class="qb">
-          <div class="qb-title">Situación Actual</div>
-          <div class="qb-sub">¿Cómo vuela hoy?</div>
+          <div class="qb-title" data-i18n="quiz.b3.sit.title">Situación Actual</div>
+          <div class="qb-sub" data-i18n="quiz.b3.sit.sub">¿Cómo vuela hoy?</div>
           <div class="chips">
-            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Vuelo comercial</span><span class="cdesc">Busca transición a aviación privada</span></div></div>
-            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Charter bajo demanda</span><span class="cdesc">Busca mayor consistencia y servicio</span></div></div>
-            <div class="chip radio" data-g="sit"><div class="ck">✓</div><div><span>Propietario / Fracción</span><span class="cdesc">Busca apoyo operativo o flota alterna</span></div></div>
+            <div class="chip radio" data-g="sit" data-key="quiz.b3.sit.comm"><div class="ck">✓</div><div><span data-i18n="quiz.b3.sit.comm">Vuelo comercial</span><span class="cdesc" data-i18n="quiz.b3.sit.comm.desc">Busca transición a aviación privada</span></div></div>
+            <div class="chip radio" data-g="sit" data-key="quiz.b3.sit.charter"><div class="ck">✓</div><div><span data-i18n="quiz.b3.sit.charter">Charter bajo demanda</span><span class="cdesc" data-i18n="quiz.b3.sit.charter.desc">Busca mayor consistencia y servicio</span></div></div>
+            <div class="chip radio" data-g="sit" data-key="quiz.b3.sit.owner"><div class="ck">✓</div><div><span data-i18n="quiz.b3.sit.owner">Propietario / Fracción</span><span class="cdesc" data-i18n="quiz.b3.sit.owner.desc">Busca apoyo operativo o flota alterna</span></div></div>
           </div>
         </div>
       </div></div>
@@ -706,30 +713,30 @@ textarea{resize:vertical;min-height:62px;}
       <!-- BLOQUE IV -->
       <div class="q-slide" id="qs-3">
       <div class="q-slide-inner">
-        <p class="q-eyebrow">Bloque IV de IV</p>
-        <h2 class="q-stitle">Alianza <em>Select</em></h2>
-        <p class="q-ssub">Seleccione sus intereses de membresía y defina su protocolo de contacto preferente.</p>
+        <p class="q-eyebrow" data-i18n="quiz.b4.eyebrow">Bloque IV de IV</p>
+        <h2 class="q-stitle" data-i18n-html="quiz.b4.title">Alianza <em>Select</em></h2>
+        <p class="q-ssub" data-i18n="quiz.b4.sub">Seleccione sus intereses de membresía y defina su protocolo de contacto preferente.</p>
         <div class="qb">
-          <div class="qb-title">Intereses de Membresía</div>
+          <div class="qb-title" data-i18n="quiz.b4.int.title">Intereses de Membresía</div>
           <div class="chips">
-            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Acceso a flota exclusiva y Upgrades</span></div></div>
-            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Experiencias de conducción y lanzamientos</span></div></div>
-            <div class="chip" data-g="ben"><div class="ck">✓</div><div><span>Servicio de Concierge 360°</span><span class="cdesc">Hoteles, eventos y experiencias</span></div></div>
+            <div class="chip" data-g="ben" data-key="quiz.b4.int.fleet"><div class="ck">✓</div><div><span data-i18n="quiz.b4.int.fleet">Acceso a flota exclusiva y Upgrades</span></div></div>
+            <div class="chip" data-g="ben" data-key="quiz.b4.int.drive"><div class="ck">✓</div><div><span data-i18n="quiz.b4.int.drive">Experiencias de conducción y lanzamientos</span></div></div>
+            <div class="chip" data-g="ben" data-key="quiz.b4.int.concierge"><div class="ck">✓</div><div><span data-i18n="quiz.b4.int.concierge">Servicio de Concierge 360°</span><span class="cdesc" data-i18n="quiz.b4.int.concierge.desc">Hoteles, eventos y experiencias</span></div></div>
           </div>
         </div>
         <div class="qdiv"></div>
         <div class="qb">
-          <div class="qb-title">Protocolo de Contacto</div>
-          <div class="qb-sub" style="margin-bottom:12px;">¿Desea una consultoría de diseño de rutas?</div>
+          <div class="qb-title" data-i18n="quiz.b4.proto.title">Protocolo de Contacto</div>
+          <div class="qb-sub" style="margin-bottom:12px;" data-i18n="quiz.b4.proto.sub">¿Desea una consultoría de diseño de rutas?</div>
           <div class="chips-sm" style="margin-bottom:16px;">
-            <div class="csm radio" data-g="cons"><div class="ck">✓</div>Sí, deseo ser contactado</div>
-            <div class="csm radio" data-g="cons"><div class="ck">✓</div>Más adelante</div>
+            <div class="csm radio" data-g="cons" data-key="quiz.b4.proto.yes"><div class="ck">✓</div><span data-i18n="quiz.b4.proto.yes">Sí, deseo ser contactado</span></div>
+            <div class="csm radio" data-g="cons" data-key="quiz.b4.proto.later"><div class="ck">✓</div><span data-i18n="quiz.b4.proto.later">Más adelante</span></div>
           </div>
-          <div class="qb-sub">Horario preferente</div>
+          <div class="qb-sub" data-i18n="quiz.b4.sched.sub">Horario preferente</div>
           <div class="chips-sm">
-            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Mañana</div>
-            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Tarde</div>
-            <div class="csm radio" data-g="hor"><div class="ck">✓</div>Noche</div>
+            <div class="csm radio" data-g="hor" data-key="quiz.b4.sched.morning"><div class="ck">✓</div><span data-i18n="quiz.b4.sched.morning">Mañana</span></div>
+            <div class="csm radio" data-g="hor" data-key="quiz.b4.sched.afternoon"><div class="ck">✓</div><span data-i18n="quiz.b4.sched.afternoon">Tarde</span></div>
+            <div class="csm radio" data-g="hor" data-key="quiz.b4.sched.night"><div class="ck">✓</div><span data-i18n="quiz.b4.sched.night">Noche</span></div>
           </div>
         </div>
         <div class="qdiv"></div>
@@ -737,13 +744,13 @@ textarea{resize:vertical;min-height:62px;}
           <div id="priv-box" onclick="togglePrivacy()" style="width:17px;height:17px;border:1px solid var(--gold-dim);border-radius:2px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <span id="priv-tick" style="font-size:10px;color:var(--gold);display:none;">✓</span>
           </div>
-          <p style="font-size:10px;letter-spacing:0.09em;line-height:1.9;color:var(--muted2);">Acepto que Fly Select trate esta información de forma confidencial para el diseño de una propuesta personalizada.</p>
+          <p style="font-size:10px;letter-spacing:0.09em;line-height:1.9;color:var(--muted2);" data-i18n="quiz.b4.privacy">Acepto que Fly Select trate esta información de forma confidencial para el diseño de una propuesta personalizada.</p>
         </div>
         <p id="q-error" style="display:none;font-size:10px;letter-spacing:0.13em;color:#e07a7a;margin-bottom:10px;line-height:1.7;"></p>
-        <button id="q-submit" class="btn-gold" style="width:100%;padding:16px;font-size:10px;letter-spacing:0.26em;display:flex;align-items:center;justify-content:center;gap:10px;" onclick="submitQ()">
+        <button id="q-submit" class="btn-gold" style="width:100%;padding:16px;font-size:10px;letter-spacing:0.26em;display:flex;align-items:center;justify-content:center;gap:10px;" onclick="submitQ()" data-i18n="quiz.b4.submit">
           Enviar Mi Solicitud →
         </button>
-        <p style="font-size:9px;letter-spacing:0.11em;color:var(--muted2);text-align:center;margin-top:14px;line-height:1.8;">
+        <p style="font-size:9px;letter-spacing:0.11em;color:var(--muted2);text-align:center;margin-top:14px;line-height:1.8;" data-i18n-html="quiz.b4.thanks">
           Gracias por formar parte de esta experiencia exclusiva.<br>Un asesor Fly Select se pondrá en contacto para diseñar su forma ideal de volar.
         </p>
       </div></div>
@@ -754,17 +761,17 @@ textarea{resize:vertical;min-height:62px;}
 
 <!-- Q NAV -->
 <div class="q-nav" id="q-nav">
-  <button class="btn-back" id="q-back" onclick="qPrev()" disabled>Anterior</button>
-  <span class="q-count">Bloque <em id="q-cur">1</em> de 4</span>
-  <button class="btn-next" id="q-next-btn" onclick="qNext()">Continuar</button>
+  <button class="btn-back" id="q-back" onclick="qPrev()" disabled data-i18n="quiz.nav.back">Anterior</button>
+  <span class="q-count"><span data-i18n="quiz.nav.count.prefix">Bloque</span> <em id="q-cur">1</em> <span data-i18n="quiz.nav.count.suffix">de 4</span></span>
+  <button class="btn-next" id="q-next-btn" onclick="qNext()" data-i18n="quiz.nav.next">Continuar</button>
 </div>
 
 <!-- SUCCESS -->
 <div id="q-success">
   <div class="s-ring"><span class="s-check">✓</span></div>
-  <p class="s-eyebrow">Solicitud Enviada</p>
-  <h2 class="s-title">Gracias por su <em>confianza</em></h2>
-  <p class="s-body">Un asesor Fly Select se pondrá en contacto para diseñar su experiencia de aviación privada a la medida.</p>
+  <p class="s-eyebrow" data-i18n="quiz.success.eyebrow">Solicitud Enviada</p>
+  <h2 class="s-title" data-i18n-html="quiz.success.title">Gracias por su <em>confianza</em></h2>
+  <p class="s-body" data-i18n="quiz.success.body">Un asesor Fly Select se pondrá en contacto para diseñar su experiencia de aviación privada a la medida.</p>
   <div class="s-logo"><img src="data:image/jpeg;base64,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" alt="Fly Select"></div>
 </div>
 
@@ -772,8 +779,9 @@ textarea{resize:vertical;min-height:62px;}
 let qCur=0,onQuiz=false,privOk=false;const QT=4;
 function openQ(){document.getElementById('q-overlay').classList.add('open');document.body.style.overflow='hidden';showBen();}
 function closeQ(){document.getElementById('q-overlay').classList.remove('open');document.getElementById('q-nav').classList.remove('visible');document.body.style.overflow='';onQuiz=false;qCur=0;}
-function showBen(){onQuiz=false;document.getElementById('sc-benefits').classList.add('active');document.getElementById('sc-quiz').classList.remove('active');document.getElementById('q-nav').classList.remove('visible');document.getElementById('q-htitle').textContent='Beneficios de Membresía';document.getElementById('sc-benefits').scrollTop=0;}
-function goToQuiz(){onQuiz=true;qCur=0;document.getElementById('sc-benefits').classList.remove('active');document.getElementById('sc-quiz').classList.add('active');document.getElementById('q-nav').classList.add('visible');document.getElementById('q-htitle').textContent='Cuestionario Premium';qUI();}
+function _t(k){const l=(window.FSI18n&&window.FSI18n.get())||'es';const d=(window.I18N_DICT&&window.I18N_DICT[l])||{};return k in d?d[k]:k;}
+function showBen(){onQuiz=false;document.getElementById('sc-benefits').classList.add('active');document.getElementById('sc-quiz').classList.remove('active');document.getElementById('q-nav').classList.remove('visible');document.getElementById('q-htitle').textContent=_t('quiz.header.benefits');document.getElementById('sc-benefits').scrollTop=0;}
+function goToQuiz(){onQuiz=true;qCur=0;document.getElementById('sc-benefits').classList.remove('active');document.getElementById('sc-quiz').classList.add('active');document.getElementById('q-nav').classList.add('visible');document.getElementById('q-htitle').textContent=_t('quiz.header.quiz');qUI();}
 function qUI(){
   document.getElementById('q-slider').style.transform=`translateX(-${qCur*100}%)`;
   document.querySelectorAll('.q-slide').forEach((s,i)=>s.classList.toggle('is-active',i===qCur));
@@ -781,10 +789,10 @@ function qUI(){
   document.getElementById('q-line').style.width=(qCur===0?0:(qCur/(QT-1))*100)+'%';
   document.getElementById('q-cur').textContent=qCur+1;
   const back=document.getElementById('q-back');
-  back.disabled=false;back.textContent=qCur===0?'← Beneficios':'← Anterior';
+  back.disabled=false;back.textContent=qCur===0?_t('quiz.nav.back.benefits'):_t('quiz.nav.back.prev');
   const nx=document.getElementById('q-next-btn');
   if(qCur===QT-1){nx.style.display='none';}
-  else{nx.style.display='flex';nx.innerHTML=(qCur===QT-2?'Último bloque ':'Continuar ')+'<span style="margin-left:3px;">→</span>';}
+  else{nx.style.display='flex';nx.innerHTML=(qCur===QT-2?_t('quiz.nav.next.last')+' ':_t('quiz.nav.next')+' ')+'<span style="margin-left:3px;">→</span>';}
   const sl=document.getElementById('qs-'+qCur);if(sl)sl.scrollTop=0;
 }
 function qNext(){if(qCur<QT-1){qCur++;qUI();}}
@@ -793,8 +801,9 @@ function qGoTo(i){if(i<=qCur){qCur=i;qUI();}}
 document.querySelectorAll('.chip').forEach(c=>{c.addEventListener('click',function(){const g=this.dataset.g,max=parseInt(this.dataset.max||'999'),isR=this.classList.contains('radio');if(isR){document.querySelectorAll(`.chip[data-g="${g}"]`).forEach(x=>x.classList.remove('sel'));this.classList.add('sel');}else{const s=document.querySelectorAll(`.chip[data-g="${g}"].sel`);if(this.classList.contains('sel'))this.classList.remove('sel');else if(s.length<max)this.classList.add('sel');}});});
 document.querySelectorAll('.csm').forEach(c=>{c.addEventListener('click',function(){const g=this.dataset.g,isR=this.classList.contains('radio');if(isR){document.querySelectorAll(`.csm[data-g="${g}"]`).forEach(x=>x.classList.remove('sel'));this.classList.add('sel');}else this.classList.toggle('sel');});});
 function togglePrivacy(){privOk=!privOk;document.getElementById('priv-tick').style.display=privOk?'block':'none';document.getElementById('priv-box').style.borderColor=privOk?'var(--gold)':'var(--gold-dim)';}
-function chipText(el){return (el.querySelector('span:not(.cdesc)')||{}).textContent?.trim()||'';}
-function csmText(el){const c=el.cloneNode(true);c.querySelectorAll('.ck').forEach(n=>n.remove());return c.textContent.trim();}
+function _esText(key){const d=(window.I18N_DICT&&window.I18N_DICT.es)||{};return key in d?d[key]:key;}
+function chipText(el){const k=el.dataset.key;if(k)return _esText(k);return (el.querySelector('span:not(.cdesc)')||{}).textContent?.trim()||'';}
+function csmText(el){const k=el.dataset.key;if(k)return _esText(k);const c=el.cloneNode(true);c.querySelectorAll('.ck').forEach(n=>n.remove());return c.textContent.trim();}
 function pickRadio(g,fn){const el=document.querySelector(`.${fn===chipText?'chip':'csm'}[data-g="${g}"].sel`);return el?fn(el):'';}
 function pickMulti(g){return Array.from(document.querySelectorAll(`.chip[data-g="${g}"].sel`)).map(chipText).filter(Boolean);}
 async function submitQ(){
@@ -819,20 +828,20 @@ async function submitQ(){
     schedule:pickRadio('hor',csmText),
     privacy_accepted:privOk,
   };
-  if(!payload.name||!payload.phone||!payload.email){err.textContent='Por favor complete nombre, teléfono y email.';err.style.display='block';qCur=0;qUI();return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)){err.textContent='El email no es válido.';err.style.display='block';qCur=0;qUI();return;}
-  if(!privOk){err.textContent='Debe aceptar el aviso de privacidad para enviar.';err.style.display='block';return;}
-  btn.disabled=true;btn.style.opacity='0.6';btn.innerHTML='Enviando...';
+  if(!payload.name||!payload.phone||!payload.email){err.textContent=_t('quiz.err.required');err.style.display='block';qCur=0;qUI();return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)){err.textContent=_t('quiz.err.email');err.style.display='block';qCur=0;qUI();return;}
+  if(!privOk){err.textContent=_t('quiz.err.privacy');err.style.display='block';return;}
+  btn.disabled=true;btn.style.opacity='0.6';btn.innerHTML=_t('quiz.nav.sending');
   try{
     const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     const d=await r.json().catch(()=>({}));
-    if(!r.ok)throw new Error(d.error||'Error al enviar');
+    if(!r.ok)throw new Error(d.error||_t('quiz.err.generic'));
     document.getElementById('q-success').classList.add('show');
     document.getElementById('q-nav').classList.remove('visible');
   }catch(e){
-    err.textContent=e.message||'No se pudo enviar. Intente de nuevo.';
+    err.textContent=e.message||_t('quiz.err.generic');
     err.style.display='block';
-    btn.disabled=false;btn.style.opacity='1';btn.innerHTML='Enviar Mi Solicitud →';
+    btn.disabled=false;btn.style.opacity='1';btn.innerHTML=_t('quiz.b4.submit');
   }
 }
 document.addEventListener('keydown',e=>{if(!document.getElementById('q-overlay').classList.contains('open'))return;if(e.key==='Escape')closeQ();if(!onQuiz)return;if(e.key==='ArrowRight'&&qCur<QT-1)qNext();if(e.key==='ArrowLeft')qPrev();});
@@ -841,6 +850,13 @@ if(so){so.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:t
 const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*65);});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('main-nav').style.boxShadow=window.scrollY>40?'0 4px 36px rgba(0,0,0,0.7)':'none';});
+document.addEventListener('i18n:changed',()=>{
+  const ht=document.getElementById('q-htitle');
+  if(ht)ht.textContent=_t(onQuiz?'quiz.header.quiz':'quiz.header.benefits');
+  if(onQuiz)qUI();
+});
 </script>
+<script src="assets/js/i18n-dict.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>
