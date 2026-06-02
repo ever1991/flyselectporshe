@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club Fly Select — Membership Card</title>
+  <title>Club Fly Select — Membresía</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Josefin+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,34 +16,34 @@
       justify-content: center;
       background: #08080A;
       font-family: 'Cormorant Garamond', serif;
+      padding: 40px 20px;
     }
 
     .scene {
-      perspective: 1400px;
+      perspective: 1600px;
       width: 100%;
-      max-width: 520px;
-      padding: 0 2rem;
+      max-width: 720px;
     }
 
     .card {
       width: 100%;
-      aspect-ratio: 85.6 / 53.98;
-      border-radius: 18px;
+      aspect-ratio: 16 / 11;
+      border-radius: 22px;
       position: relative;
-      transform: rotateX(6deg) rotateY(-8deg);
-      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: rotateX(4deg) rotateY(-6deg);
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       cursor: pointer;
       box-shadow:
-        0 50px 100px rgba(0,0,0,0.85),
-        0 20px 40px rgba(0,0,0,0.5),
+        0 60px 120px rgba(0,0,0,0.85),
+        0 24px 48px rgba(0,0,0,0.5),
         0 0 0 0.5px rgba(201,168,76,0.35),
-        inset 0 0 80px rgba(201,168,76,0.03);
+        inset 0 0 100px rgba(201,168,76,0.03);
     }
 
     .card-face {
       position: absolute;
       inset: 0;
-      border-radius: 18px;
+      border-radius: 22px;
       background: linear-gradient(145deg, #1C1C20 0%, #0C0C0F 45%, #161619 100%);
       overflow: hidden;
     }
@@ -77,12 +77,13 @@
         transparent 75%
       );
       animation: shimmer 5s ease-in-out infinite;
-      border-radius: 18px;
+      border-radius: 22px;
+      pointer-events: none;
     }
 
     @keyframes shimmer {
-      0%, 100% { opacity: 0.5; transform: translateX(-15px) skewX(-5deg); }
-      50% { opacity: 1; transform: translateX(15px) skewX(-5deg); }
+      0%, 100% { opacity: 0.5; transform: translateX(-20px) skewX(-5deg); }
+      50% { opacity: 1; transform: translateX(20px) skewX(-5deg); }
     }
 
     .geo {
@@ -90,51 +91,55 @@
       border-style: solid;
       border-color: rgba(201,168,76,0.1);
       border-radius: 50%;
-      right: -50px;
-      bottom: -50px;
+      right: -90px;
+      bottom: -90px;
+      pointer-events: none;
     }
 
     .lines {
       position: absolute;
       top: 0; left: 0;
-      width: 45%;
+      width: 38%;
       height: 100%;
       background-image: repeating-linear-gradient(
         -55deg,
         transparent,
-        transparent 18px,
-        rgba(201,168,76,0.025) 18px,
-        rgba(201,168,76,0.025) 18.5px
+        transparent 22px,
+        rgba(201,168,76,0.025) 22px,
+        rgba(201,168,76,0.025) 22.5px
       );
+      pointer-events: none;
     }
 
     .card-content {
       position: absolute;
       inset: 0;
-      padding: 7% 8%;
+      padding: 5% 6% 5%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     .top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      margin-bottom: 3.5%;
     }
 
-    .logo-block { display: flex; flex-direction: column; gap: 3px; }
+    .logo-block { display: flex; flex-direction: column; gap: 4px; }
 
     .club-label {
-      font-size: clamp(7px, 1.3vw, 9px);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(8px, 1.1vw, 10px);
       letter-spacing: 0.55em;
       text-transform: uppercase;
       color: rgba(201,168,76,0.5);
-      font-weight: 400;
+      font-weight: 300;
     }
 
     .fly-select {
-      font-size: clamp(20px, 4.2vw, 30px);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3.6vw, 32px);
       font-weight: 300;
       letter-spacing: 0.22em;
       color: #E8C96A;
@@ -142,81 +147,88 @@
       text-transform: uppercase;
     }
 
+    .plane { opacity: 0.65; margin-top: 4px; }
 
-    .brand-logo {
-      height: clamp(42px, 8vw, 56px);
-      width: auto;
-      object-fit: contain;
-      border-radius: 50%;
-      border: 0.5px solid rgba(201,168,76,0.45);
-      box-shadow: 0 0 14px rgba(201,168,76,0.18);
-      display: block;
+    .bene-eyebrow {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(7px, 0.9vw, 9px);
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.4);
+      margin-bottom: 2.5%;
+      font-weight: 300;
     }
 
-    .plane { opacity: 0.65; margin-top: 2px; }
+    .bene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3% 4%;
+      flex: 1;
+    }
 
-    .mid { display: flex; align-items: center; gap: 4%; }
+    .bene-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .bene-icon {
+      font-size: clamp(16px, 2.2vw, 22px);
+      line-height: 1;
+      opacity: 0.92;
+    }
+
+    .bene-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(8.5px, 1.05vw, 10.5px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E8C96A;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .bene-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(9.5px, 1.15vw, 12px);
+      color: rgba(232,232,232,0.55);
+      line-height: 1.35;
+      font-weight: 300;
+      font-style: italic;
+    }
 
     .bottom {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      margin-top: 3.5%;
     }
 
-    .name-block { display: flex; flex-direction: column; gap: 3px; }
-
-    .name-label {
-      font-size: clamp(6px, 1vw, 8px);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.35);
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(11px, 1.5vw, 15px);
+      letter-spacing: 0.04em;
+      color: rgba(201,168,76,0.55);
+      font-weight: 300;
     }
-
-    .name-val {
-      font-size: clamp(11px, 2.3vw, 16px);
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      color: #E8C96A;
-      text-transform: uppercase;
-    }
-
-    .right-bottom { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 
     .tier {
-      font-size: clamp(6px, 1vw, 8px);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(6px, 0.85vw, 8px);
       letter-spacing: 0.45em;
       text-transform: uppercase;
       color: rgba(201,168,76,0.45);
       border: 0.5px solid rgba(201,168,76,0.2);
-      padding: 2px 9px 2px 10px;
+      padding: 4px 12px 4px 14px;
       border-radius: 2px;
+      font-weight: 300;
     }
 
-    .exp-row { display: flex; gap: 14px; }
-
-    .exp-f { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
-
-    .exp-lbl {
-      font-size: clamp(5px, 0.85vw, 7px);
-      letter-spacing: 0.35em;
-      color: rgba(201,168,76,0.3);
-      text-transform: uppercase;
-    }
-
-    .exp-num {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(9px, 1.8vw, 13px);
-      color: rgba(201,168,76,0.65);
-      letter-spacing: 0.08em;
-    }
-
-    .card-num {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(10px, 2.2vw, 15px);
-      letter-spacing: 0.2em;
-      color: rgba(201,168,76,0.6);
-      display: flex;
-      gap: 1.4em;
+    @media (max-width: 600px) {
+      .card { aspect-ratio: 4 / 5; }
+      .bene-grid { grid-template-columns: repeat(2, 1fr); gap: 4% 5%; }
     }
   </style>
 </head>
@@ -227,19 +239,19 @@
       <div class="card-face">
         <div class="shimmer"></div>
         <div class="lines"></div>
-        <div class="geo" style="width:260px;height:260px;border-width:0.5px;"></div>
-        <div class="geo" style="width:190px;height:190px;border-width:0.5px;opacity:0.7;"></div>
-        <div class="geo" style="width:120px;height:120px;border-width:0.5px;opacity:0.5;"></div>
+        <div class="geo" style="width:340px;height:340px;border-width:0.5px;"></div>
+        <div class="geo" style="width:240px;height:240px;border-width:0.5px;opacity:0.7;"></div>
+        <div class="geo" style="width:150px;height:150px;border-width:0.5px;opacity:0.5;"></div>
 
         <div class="card-content">
 
           <div class="top">
             <div class="logo-block">
               <div class="club-label">Club</div>
-              <img class="brand-logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBhUQBxMWFRAVGRUbGRUVGSAWEBwgIB0iIiAdHx8kKDQsJCYxJx8fLTotMT00MENDIys9QDQ1QDQuMEABCgoKDQ0OFxAQFTcbGCU3NywxKysrNys3Ky0wNzctLSsrLS4rKys3NzctNy0rNzcrNysrKy0rLSsrKys3Ny0rLf/AABEIAMgAyAMBIgACEQEDEQH/xAAcAAEBAAIDAQEAAAAAAAAAAAAAAQUHAgQGAwj/xAA5EAACAgECBAIIBAUDBQAAAAAAAQIDBAURBhIhUTFBBxMiMmFxgZEUwdHwFSRTobEzYpIWI0JUk//EABoBAQADAQEBAAAAAAAAAAAAAAABAwQCBQb/xAAkEQEBAAIBBAEEAwAAAAAAAAAAAQIRAwQSITFBEzJRYSNxgf/aAAwDAQACEQMRAD8A0yAAAAApAAAAAFIAAAAAACkAAAAAUgAAAAAAKCAAAAKQAAAABSAAAAAAApAAAAAFIAAAAAACkAAAACkAAAAAUEAAAAAVJt9ABD1Gi8C6tqaUrUqYPzn7/wBI/rsewwfRTp8o/wA1fY3/ALVGC/vuZ8+q4sfFruceV+Gpwbln6HdMuh/LZFsX3kozX2Wx5jiD0T8Q6XW54XLk1r+nurf+D8fo2MOq4svEqLhY8CUTjKE2pppp7NPo0Q0OQAAACgCAAAAABQBAAABSAAAAAKBa6522KNabk3skvFmy+E+G6NNirMlKV78/FR+C/U89wRp0ZTd9q8Okfzf5fc2Binl9Z1F32Y/618PF47qy+KZfFPJ6lr+Hoc6/x6koWNrnS3ittvHz8/Lseo0y+rLojZjSUoSW6lF7xZh7MpJbPCy2emaxeplILZGOxFsZKK2RCrJ4r0gej3B4px3bipV5iXSa6Rn/ALZ9/n4r+x+ds3DyMDLlTmRcLINxlF+KaP1+jUfp24YhPFhqWKtpxcYW7eafuyfyfT6rsb+k6iy9mXpVnj8tKgFPUVIAAAAAApAAAAApAAAAAFAgAA2TwxWq9IrS84p/fr+Z6bFSPL8J3K7SK9vJbP6PY9Tinz3Lv6mW/wAvTx+2OWt6LVrukyos6PxhLtJeD/L6muNC4j1fgjPsosipJNqVUn7Kl5STX7aNt48lFe0ap03DhxJxndbeualTnJ9mt2or99jX0uU7Mpn9sZuWbs17dqfpE4w1nIVWlvllLooUV7zf1e7+x7ng/g7jO26N/EWoZFS8fVRtc7H8Hu3FfZ/QxOi23+jnPldVX63T7WvWbJO+rs9/Nfvo/HbGi65pmuYys0q2NkfPlftL4NeK+pPLyax/jxnb+Vfbd+WRitkYTjnFhmcG5cJ/0bWvnGLkv7pGbbUVvLol5mr/AEo+kXTsfSrMLRpq2+2LhOUHvXCL6S6+b23XTwM3DhllnNRNvhokAHvKAAAAUgAAAAAAAAAAAUgAAAAeo4I1D1OS6JvpLrH5+a+q/wAGwKLJdzTNVk6rFKt7STTTRtHhrVa9WwlJbKcek12ff5M8rruHV756rZwcm521msy6dOnWTj1lGE2u/RNmL4D0n8HgJTXtP2p/N+C/fxM5St0d3DqhTHatbIxTOzHtW2edu9RTCScZpOL6NPqmvNM1X6QeELuGMpZejuUceb29ltSrk/Lfs/L7fPbOP7yMhqOmU6zoduPkLeNkJLr5Pbo/o9n9C3g5bx5fpTyY7j8zZWralmV8uXfbOPac5SX2bOmAe5JPhkAASBSAAAAAAAoIAAAApAAAAAFIAB3dH1O/Sc1WUfJrya7M6QIyxlmqmXV3G69E1HH1TDVuK90/FeafZmao8TR3D2t5Oh5vPT1g/eg/CS/X4m5tD1LF1XDjbhy3i/Ff+SfZrueL1HT3ju59rZhyd0/bN4/iTi7Xq+HuFrbpPaxxcK15uclsvt4/Q6ubqWLpOG7s6SjXHxfm/gl5s0txlxVlcUahzW+zTDdV19l3fdsnpeC8mW76jjly1HngAe0yhSAAAAAAApAAAAApAAAAAFBAAAAAFAGV4c17K0DOVmP1i/fg/dkv17MxIOcsZlNVMuvTN8UcSZXEOZzW+zVH3K0+i+L7v4mEAGOMxmoW2+woIdIAAAAKAIAAAAAFAEAAAFIB9sTFyM3IVeHCVlj32jCLlN7Ld7JdfA71nDevVVuVmJkKKTbbpmkkvFt7Ha4IyVicSQnLdJRu8OkutUl0+4z9VxLMVrCszOd/1LVKv47pJeRXcr3ajrXjbC1491lMp1xk4Q25pJNxju9lu/LdnGuE7bFGtNybSSS3bb8EkZzQ3bPQMyqlOUpqjpFbt7Wb+BjFXmaXkwsnCUJRkpR54tdU0/Px8iZlu2I142+P4a/8T6rkl63m5eTZ8/Nvty7eO+/TY4WQnXNxsTUk9mmtmn2aPXfxLS1P+Keql+J9Z/pc3/Z9b73rN/Hbz5e/wPJ5N88nIlZb70pSk/m3uxjlb8Fmnd03QdX1Slz03Httgns5QhKUd+26Rw1PR9S0lxWp02Vc2/L6yLhvt47b/NHrND1a2zhqrHury1CqVjjPFnyKXNLd83fZ7oxPGVai6ZRtvkpRk/V5E+e2HX8/yK5y3u7XVw8bdaHCHEk4Jww8hp9U1VLb/B0LdK1CnUVjW1TWQ3FKpxas3fgtvHqbF1nPjfkxb/H/AOnWv5ezlp6RXgu55DSL8injameW7OZWwe9rcrdt+m7fw2Iw5rlLU3DVYC2udNrjcmpRbTT6NNeKZ3dM0PVdVrctMottjF7N1wckvg9jsa3p2fPUrrXVPkc7Jc2z225m9z0HBuYquGL636/rbB7Y8uW7ou/Y6y5dY7iJhd6ea1Hh/WdMx/Wajj21Q3S5pwlGO/bdjTuHtZ1PH9Zp2NdZXvtzQhKUd+26RkuKrL50R9X+M9Vv7Syp88d/Lb+5383M1e3hvCho8rVGELFJVSaW/N57Mj6t1P2dnl5jUdJ1HS7Yw1KmyqUlvFTi4t/Lc7//AEdxN/6WR/8AKX6HR1SWqO2P8VlY5bey7G3Lb4bnodN1/UlwflKV9rm50csnZLmXXrs9+h1lllJLESedPLZmLkYWTKvMhKFkekoyXLJfNHxOd91uRa53ycpPxlJtyfzbOBb/AG5AUgAAAAUgAAAWLcXvEgKBYTnD3G18ugnZOfvtv5vc4gjUF3fLt5diAEj6wyciuO1c5Jdk2kcLLJ2y3sbb7t7shCNRO32WXkpdLJf8mcHbY7OZyfN339r7nADU/BuvtLKyZR2lOTT8nJnGq+6pbVSa+TaPmUahuvpZkXWx2slJrs22iV5F1UdqpSS7JtHzA1Ddc7LbLXvbJt/F7kU5qDSb2fit+hxA0gBSEgAAAAAAAAAAKQAAAABSAAAAAAApAAAAAFIAAAAAACggAAACkAAAAAUgAAAAAAKQAAAABSAAAAAAApAAAAApAAAAAFAAgAAAACkAAAAAUACAAAAAKQAAAAAAA//Z" alt="Fly Select">
+              <div class="fly-select">Fly Select</div>
             </div>
             <div class="plane">
-              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <svg width="46" height="46" viewBox="0 0 42 42" fill="none">
                 <path d="M5 23L17 18L30 5L35 10L20 23L25 37L20 34L15 26L8 28Z" fill="none" stroke="#C9A84C" stroke-width="0.75" stroke-linejoin="round" stroke-linecap="round"/>
                 <path d="M17 18L19.5 23" stroke="#C9A84C" stroke-width="0.6" opacity="0.45"/>
                 <path d="M30 5L34 3L35 7" stroke="#C9A84C" stroke-width="0.5" opacity="0.35" stroke-linejoin="round"/>
@@ -247,48 +259,43 @@
             </div>
           </div>
 
-          <div class="mid">
-            <svg width="50" height="38" viewBox="0 0 50 38" fill="none">
-              <rect x="1" y="1" width="48" height="36" rx="5" fill="#120F02" stroke="#C9A84C" stroke-width="0.7"/>
-              <rect x="8" y="7" width="34" height="24" rx="3" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.45"/>
-              <line x1="17" y1="1" x2="17" y2="37" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
-              <line x1="33" y1="1" x2="33" y2="37" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
-              <line x1="1" y1="13" x2="49" y2="13" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
-              <line x1="1" y1="25" x2="49" y2="25" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
-              <rect x="19" y="15" width="12" height="8" rx="1.5" fill="#C9A84C" opacity="0.12"/>
-            </svg>
-            <svg width="18" height="22" viewBox="0 0 18 22" fill="none" opacity="0.45">
-              <path d="M7 4C10.8 5.5 13 8 13 11S10.8 16.5 7 18" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round"/>
-              <path d="M10 7C12.5 8.5 14 9.7 14 11S12.5 13.5 10 15" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="4.5" cy="11" r="1.4" fill="#C9A84C"/>
-            </svg>
-          </div>
-
-          <div class="card-num">
-            <span>5481</span>
-            <span>••••</span>
-            <span>••••</span>
-            <span>2093</span>
+          <div class="bene-eyebrow">Beneficios Jet Card incluidos</div>
+          <div class="bene-grid">
+            <div class="bene-item">
+              <div class="bene-icon">🍽️</div>
+              <div class="bene-title">Catering Premium</div>
+              <div class="bene-desc">Incluido en todos los vuelos. Menú y bebidas de primera.</div>
+            </div>
+            <div class="bene-item">
+              <div class="bene-icon">⚡</div>
+              <div class="bene-title">Disponibilidad 24/7</div>
+              <div class="bene-desc">Garantizada con tiempo de respuesta corto.</div>
+            </div>
+            <div class="bene-item">
+              <div class="bene-icon">🌐</div>
+              <div class="bene-title">Flota Global</div>
+              <div class="bene-desc">Múltiples categorías en destinos internacionales.</div>
+            </div>
+            <div class="bene-item">
+              <div class="bene-icon">🥂</div>
+              <div class="bene-title">Bebidas Premium</div>
+              <div class="bene-desc">Vinos, espumosos y espirituosas a bordo.</div>
+            </div>
+            <div class="bene-item">
+              <div class="bene-icon">🐾</div>
+              <div class="bene-title">Mascotas Bienvenidas</div>
+              <div class="bene-desc">Sin restricciones ni cargos adicionales.</div>
+            </div>
+            <div class="bene-item">
+              <div class="bene-icon">✨</div>
+              <div class="bene-title">Amenidades de Lujo</div>
+              <div class="bene-desc">Seleccionadas según duración del vuelo.</div>
+            </div>
           </div>
 
           <div class="bottom">
-            <div class="name-block">
-              <div class="name-label">Member</div>
-              <div class="name-val">E. Salinas</div>
-            </div>
-            <div class="right-bottom">
-              <div class="tier">Black Edition</div>
-              <div class="exp-row">
-                <div class="exp-f">
-                  <div class="exp-lbl">Valid</div>
-                  <div class="exp-num">05/29</div>
-                </div>
-                <div class="exp-f">
-                  <div class="exp-lbl">Thru</div>
-                  <div class="exp-num">05/31</div>
-                </div>
-              </div>
-            </div>
+            <div class="tagline">Beyond the Experience</div>
+            <div class="tier">Membresía Premium</div>
           </div>
 
         </div>
@@ -304,25 +311,24 @@
       const r = scene.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `rotateX(${-y * 16}deg) rotateY(${x * 20}deg) translateY(-6px)`;
+      card.style.transform = `rotateX(${-y * 12}deg) rotateY(${x * 14}deg) translateY(-6px)`;
     });
 
     scene.addEventListener('mouseleave', () => {
-      card.style.transform = 'rotateX(6deg) rotateY(-8deg)';
+      card.style.transform = 'rotateX(4deg) rotateY(-6deg)';
     });
 
-    // Touch support
     scene.addEventListener('touchmove', e => {
       e.preventDefault();
       const touch = e.touches[0];
       const r = scene.getBoundingClientRect();
       const x = (touch.clientX - r.left) / r.width - 0.5;
       const y = (touch.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `rotateX(${-y * 16}deg) rotateY(${x * 20}deg) translateY(-6px)`;
+      card.style.transform = `rotateX(${-y * 12}deg) rotateY(${x * 14}deg) translateY(-6px)`;
     }, { passive: false });
 
     scene.addEventListener('touchend', () => {
-      card.style.transform = 'rotateX(6deg) rotateY(-8deg)';
+      card.style.transform = 'rotateX(4deg) rotateY(-6deg)';
     });
   </script>
 
